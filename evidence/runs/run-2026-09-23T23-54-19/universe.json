@@ -1,0 +1,65 @@
+[
+  {
+    "symbol": "OPENAI",
+    "name": "OpenAI PreStock",
+    "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
+    "category": "PreStocks",
+    "source": "rung/packages/sdk/test/token2022.test.ts + rung/docs/limitations.md"
+  },
+  {
+    "symbol": "SPYx",
+    "name": "SPDR S&P 500 ETF Trust (tokenized)",
+    "mint": "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+    "category": "xStocks",
+    "source": "xstocks.fi public API — placeholder, see discover-universe step"
+  },
+  {
+    "symbol": "ANDURIL",
+    "name": "Anduril PreStocks",
+    "mint": "PresTj4Yc2bAR197Er7wz4UUKSfqt6FryBEdAriBoQB",
+    "category": "PreStocks",
+    "source": "prestocks.com API"
+  },
+  {
+    "symbol": "ANTHROPIC",
+    "name": "Anthropic PreStocks",
+    "mint": "Pren1FvFX6J3E4kXhJuCiAD5aDmGEb7qJRncwA8Lkhw",
+    "category": "PreStocks",
+    "source": "prestocks.com API"
+  },
+  {
+    "symbol": "FIGUREAI",
+    "name": "Figure AI PreStocks",
+    "mint": "PreZad18qfPtbxNpMtMuAuX2zVpvkEU8DnJx56faCWd",
+    "category": "PreStocks",
+    "source": "prestocks.com API"
+  },
+  {
+    "symbol": "KALSHI",
+    "name": "Kalshi PreStocks",
+    "mint": "PreLWGkkeqG1s4HEfFZSy9moCrJ7btsHuUtfcCeoRua",
+    "category": "PreStocks",
+    "source": "prestocks.com API"
+  },
+  {
+    "symbol": "NEURALINK",
+    "name": "Neuralink PreStocks",
+    "mint": "PrekqLJvJ3qVdXmBGDiexvwUTF4rLFDa6HWS4HJbw9S",
+    "category": "PreStocks",
+    "source": "prestocks.com API"
+  },
+  {
+    "symbol": "POLYMARKET",
+    "name": "Polymarket PreStocks",
+    "mint": "Pre8AREmFPtoJFT8mQSXQLh56cwJmM7CFDRuoGBZiUP",
+    "category": "PreStocks",
+    "source": "prestocks.com API"
+  },
+  {
+    "symbol": "SPACEX",
+    "name": "SpaceX PreStocks",
+    "mint": "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh",
+    "category": "PreStocks",
+    "source": "prestocks.com API"
+  }
+]

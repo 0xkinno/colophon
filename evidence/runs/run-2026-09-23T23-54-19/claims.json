@@ -1,0 +1,26 @@
+[
+  {
+    "claimId": "6ece7b2164a96546",
+    "instrument": "OPENAI",
+    "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
+    "category": "PreStocks",
+    "statement": "At 2026-09-23T23:54:19.801Z, instrument OPENAI (mint PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF) had:\n  raw_supply = 1901815775765\n  stale_multiplier = 1  (the 'multiplier' field — what a naive current-state reader would use)\n  correct_multiplier = 1.4861347  (the 'newMultiplier' field — effective since 2026-07-17T16:30:00.000Z)\n  effective_since = 2026-07-17T16:30:00.000Z (68.3 days ago)\n\n  A naive current-state interpretation → ui_supply = 1901.815776 token units\n  Time-indexed reconstruction → ui_supply = 2826.354417 token units\n\n  Difference = 924.538642 token units (48.6135% error)\n  Estimated economic effect = REQUIRES_PRICE_CONTEXT (see price fetch step)\n\n  Evidence:\n    signature: NOT_FOUND_IN_SCANNED_WINDOW\n    slot: UNKNOWN\n    scan_timestamp: 1790207659\n    reproduction: node scripts/dollar-divergence-hunt.mjs",
+    "status": "MEASURED_NO_PRICE",
+    "relativeErrorPct": "48.6135%",
+    "daysSinceEffective": "68.3",
+    "evidenceLabel": "MEASURED",
+    "limitationsNote": "Dollar impact requires external price feed. Supply-level divergence is measured from chain state only."
+  },
+  {
+    "claimId": "5ab612ccd825faf0",
+    "instrument": "SPACEX",
+    "mint": "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh",
+    "category": "PreStocks",
+    "statement": "At 2026-09-23T23:54:19.801Z, instrument SPACEX (mint PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh) had:\n  raw_supply = 8742506420027\n  stale_multiplier = 1  (the 'multiplier' field — what a naive current-state reader would use)\n  correct_multiplier = 5  (the 'newMultiplier' field — effective since 2026-06-10T04:30:00.000Z)\n  effective_since = 2026-06-10T04:30:00.000Z (105.8 days ago)\n\n  A naive current-state interpretation → ui_supply = 8742.506420 token units\n  Time-indexed reconstruction → ui_supply = 43712.532100 token units\n\n  Difference = 34970.025680 token units (400.0000% error)\n  Estimated economic effect = REQUIRES_PRICE_CONTEXT (see price fetch step)\n\n  Evidence:\n    signature: NOT_FOUND_IN_SCANNED_WINDOW\n    slot: UNKNOWN\n    scan_timestamp: 1790207659\n    reproduction: node scripts/dollar-divergence-hunt.mjs",
+    "status": "MEASURED_NO_PRICE",
+    "relativeErrorPct": "400.0000%",
+    "daysSinceEffective": "105.8",
+    "evidenceLabel": "MEASURED",
+    "limitationsNote": "Dollar impact requires external price feed. Supply-level divergence is measured from chain state only."
+  }
+]

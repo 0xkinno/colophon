@@ -1,0 +1,56 @@
+{
+  "runId": "run-2026-09-23T23-54-19",
+  "gitCommit": "UNKNOWN",
+  "toolchain": "Node.js v24.14.1",
+  "rpcSource": "mainnet-beta",
+  "timestamp": "2026-09-23T23:54:19.801Z",
+  "nowTs": 1790207659,
+  "epochInfo": {
+    "absoluteSlot": 449858260,
+    "blockHeight": 427898404,
+    "epoch": 1041,
+    "slotIndex": 146260,
+    "slotsInEpoch": 432000,
+    "transactionCount": 551894048829
+  },
+  "inputs": {
+    "seededUniverse": 2,
+    "dynamicDiscovery": 8,
+    "totalUniverse": 9
+  },
+  "outputs": {
+    "mintStatesScanned": 9,
+    "withScaledUiAmount": 8,
+    "divergencesFound": 2,
+    "noDivergence": 6,
+    "multiplierEventsFound": 0
+  },
+  "claims": [
+    {
+      "claimId": "6ece7b2164a96546",
+      "instrument": "OPENAI",
+      "status": "MEASURED_NO_PRICE",
+      "relativeErrorPct": "48.6135%"
+    },
+    {
+      "claimId": "5ab612ccd825faf0",
+      "instrument": "SPACEX",
+      "status": "MEASURED_NO_PRICE",
+      "relativeErrorPct": "400.0000%"
+    }
+  ],
+  "evidenceFiles": [
+    "evidence/runs/run-2026-09-23T23-54-19/universe.json",
+    "evidence/runs/run-2026-09-23T23-54-19/mint_states.jsonl",
+    "evidence/runs/run-2026-09-23T23-54-19/divergence_cases.json",
+    "evidence/runs/run-2026-09-23T23-54-19/multiplier_timelines.json",
+    "evidence/runs/run-2026-09-23T23-54-19/claims.json",
+    "evidence/runs/run-2026-09-23T23-54-19/run_manifest.json"
+  ],
+  "limitations": [
+    "Dollar impact requires external price feed — not fetched in this step.",
+    "Multiplier history scan covers only the most recent 50 transactions.",
+    "Dynamic universe discovery depends on availability of xStocks and PreStocks APIs.",
+    "RPC history gaps may prevent recovery of older multiplier update signatures."
+  ]
+}
