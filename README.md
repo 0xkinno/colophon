@@ -9,6 +9,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
 > **Verifiable historical ownership accounting and on-chain cryptographic proof receipts for Solana Token-2022 scaled-supply assets (xStocks, PreStocks).**
+>
+> Tracks: Main Track x PreStocks.
 
 ![Colophon Archival Ledger Banner](docs/screenshot/landing.png)
 
@@ -28,6 +30,7 @@ Colophon implements a deterministic temporal accounting kernel. It reconstructs 
 |---|---|
 | **Live App** | [https://colophon-taupe.vercel.app](https://colophon-taupe.vercel.app) |
 | **Video Demo** | [Demo Walkthrough](#) |
+| **Tracks** | Main Track x PreStocks |
 | **GitHub Repository** | [https://github.com/0xkinno/colophon](https://github.com/0xkinno/colophon) |
 | **Devnet Program Explorer** | [Solana Explorer (`7pPKsqAg...`)](https://explorer.solana.com/address/7pPKsqAg9AFZzSEJbygpbqAVKGFgXpaN5AcqNKrwhCe2?cluster=devnet) |
 | **Anchor Verification Proof** | [Transaction Proof (`3ZF39Xyq...`)](https://explorer.solana.com/tx/3ZF39XyqTqVswAY8FVnpLZmW4Uq1VRepcWBFfmnmnFpr8BchUc8fUjJhLuCdzZreD1Ew4G9NAdijJFqT88Xie6Nz?cluster=devnet) |
