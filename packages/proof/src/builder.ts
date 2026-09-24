@@ -13,6 +13,7 @@ import {
   computeEventsHash,
   computeBundleHash,
 } from "./bundle.js";
+import { EvidenceItem, EvidenceMerkleTree, MerkleProof } from "./merkle.js";
 
 export function buildProofBundle(params: {
   statement: Statement;
@@ -71,6 +72,51 @@ export function buildProofBundle(params: {
   const sourceEventsHash = computeEventsHash(events);
   const bundleHash = computeBundleHash(manifest, statement.statementHash, sourceEventsHash);
 
+  // Construct deterministic Evidence Merkle Tree
+  const evidenceItems: import("./merkle.js").EvidenceItem[] = sourceAnchors.map((anchor, idx) => ({
+    id: `evidence-${idx}`,
+    type:
+      anchor.sourceRole === "MULTIPLIER_SCHEDULE"
+        ? "MULTIPLIER_SCHEDULE"
+        : anchor.sourceRole === "BALANCE_MOVEMENT"
+        ? "TRANSFER"
+        : "METADATA",
+    signature: anchor.signature,
+    slot: anchor.slot,
+    blockTime: anchor.blockTime,
+    data: {
+      role: anchor.sourceRole,
+      type: anchor.instructionType,
+      desc: anchor.description,
+    },
+  }));
+
+  const merkleTree = new EvidenceMerkleTree(evidenceItems);
+  const evidenceRoot = merkleTree.getRoot();
+  const merkleProofs: Record<string, MerkleProof> = {};
+
+  if (evidenceItems.length > 0) {
+    try {
+      merkleProofs["primary"] = merkleTree.getProof(0);
+      if (evidenceItems.length > 1) {
+        merkleProofs["secondary"] = merkleTree.getProof(1);
+      }
+    } catch (_) {}
+  }
+
+  const statementCommitment = EvidenceMerkleTree.computeStatementCommitment({
+    statementHash: statement.statementHash,
+    evidenceRoot,
+    instrumentMint: statement.mint,
+    wallet: statement.wallet,
+    effectiveTimestamp: statement.asOfTs,
+    schemaVersion: "1.0.0",
+    engineVersion: statement.kernelVersion,
+  });
+
+  // Attach evidence root to statement
+  statement.evidenceRoot = evidenceRoot;
+
   return {
     manifest,
     statement,
@@ -80,7 +126,11 @@ export function buildProofBundle(params: {
       statementHash: statement.statementHash,
       sourceEventsHash,
       bundleHash,
+      evidenceRoot,
+      statementCommitment,
     },
+    merkleProof: merkleProofs["primary"],
+    merkleProofs,
     offlineVerification: {
       passed: true,
       checkedAt: new Date().toISOString(),

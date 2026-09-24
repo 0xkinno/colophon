@@ -30,6 +30,8 @@ export type ProofManifest = {
   evidenceLabel: EvidenceLabel;
 };
 
+import { MerkleProof } from "./merkle.js";
+
 export type ProofBundle = {
   manifest: ProofManifest;
   statement: Statement;
@@ -39,7 +41,11 @@ export type ProofBundle = {
     statementHash: string;
     sourceEventsHash: string;
     bundleHash: string;
+    evidenceRoot?: string;
+    statementCommitment?: string;
   };
+  merkleProof?: MerkleProof;
+  merkleProofs?: Record<string, MerkleProof>;
   offlineVerification: {
     passed: boolean;
     checkedAt: string;

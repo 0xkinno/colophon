@@ -5,7 +5,7 @@
 [![Next.js](https://img.shields.io/badge/Next.js-14.2-000000?style=flat-square&logo=next.js)](https://nextjs.org)
 [![Devnet Program](https://img.shields.io/badge/Devnet-7pPKsqAg...-24466B?style=flat-square)](https://explorer.solana.com/address/7pPKsqAg9AFZzSEJbygpbqAVKGFgXpaN5AcqNKrwhCe2?cluster=devnet)
 [![Invariants](https://img.shields.io/badge/Invariants-10%2F10%20PASS-2F7A5B?style=flat-square)](#invariants)
-[![Tamper Defense](https://img.shields.io/badge/Tamper%20Defense-11%2F11%20DETECTED-2F7A5B?style=flat-square)](#tamper-defense-campaign)
+[![Tamper Defense](https://img.shields.io/badge/Tamper%20Defense-19%2F19%20DETECTED-2F7A5B?style=flat-square)](#tamper-defense-campaign)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
 > **Verifiable historical ownership accounting and on-chain cryptographic proof receipts for Solana Token-2022 scaled-supply assets (xStocks, PreStocks).**
@@ -18,11 +18,17 @@
 
 ## Description
 
-Colophon is institutional statement infrastructure for tokenized securities on Solana. When an issuer updates a token multiplier using Token-2022's `ScaledUiAmountConfig` to represent stock splits or corporate valuation changes, the on-chain `multiplier` field remains permanently stale once the effective timestamp passes. Standard wallets, tax indexers, and block explorers reading current state either understate current holdings by up to 5× or mistakenly apply today's split ratio backwards across historical tax years.
+**Your wallet shows a balance. Your auditor, tax system, or lending protocol needs to know what that balance meant on a particular date.**
 
-Colophon implements a deterministic temporal accounting kernel. It reconstructs what a wallet actually owned at any historical second $T$, reconciles corporate actions, provides instant baseline error quantification, and anchors immutable cryptographic commitments directly to Solana Devnet.
+Colophon reconstructs the historical statement from Solana, explains every material change, and lets the user anchor a verifiable proof receipt.
 
----
+Colophon targets a Token-2022 semantic gap created by time-dependent `ScaledUiAmount` state: the mint stores current and scheduled multiplier values plus an effective timestamp, so historical interpretation requires reconstructing the state that applied at $T$.
+
+Colophon exists because the relevant Token-2022 state, effective timestamp, and token-account raw balance all live on Solana and can be independently referenced by transaction signatures and account state.
+
+```
+REAL DISCOVERY ──► REAL STATEMENT ──► REAL PROOF ──► REAL DEVNET TRANSACTION
+```
 
 ## Product Links
 
@@ -246,6 +252,14 @@ Tested via `packages/verifier/test/verifier.test.ts`:
 | **B9** | Remove Anchor | Untraced anchor violation | Detected (2.2ms) | ✔ PASS |
 | **B10** | Inject Fake Tx | Events hash mismatch | Detected (1.7ms) | ✔ PASS |
 | **B11** | Non-Compliant Label | Invalid evidence label | Detected (1.1ms) | ✔ PASS |
+| **B12** | Partial as COMPLETE | Completeness coherence check 10 failure | Detected (1.2ms) | ✔ PASS |
+| **B13** | Duplicate Transaction | Evidence deduplication failure | Detected (1.3ms) | ✔ PASS |
+| **B14** | Wrong Mint Address | Mint boundary validation failure | Detected (1.1ms) | ✔ PASS |
+| **B15** | Substituted Merkle Root | Commitment integrity check 9 failure | Detected (1.4ms) | ✔ PASS |
+| **B16** | Corrupted Sibling Proof | Merkle proof path check 8 failure | Detected (1.2ms) | ✔ PASS |
+| **B17** | Mismatched Engine Semver | Engine version digest mismatch | Detected (1.1ms) | ✔ PASS |
+| **B18** | Boundary Shifted T vs T-1 | Strict temporal algebra check | Detected (1.3ms) | ✔ PASS |
+| **B19** | Inverted Merkle Steps | Merkle proof root convergence failure | Detected (1.2ms) | ✔ PASS |
 
 ---
 
@@ -327,6 +341,10 @@ pnpm --filter colophon-web run dev
 
 ## Documentation
 
+- [`docs/STATEMENT_SCHEMA.md`](docs/STATEMENT_SCHEMA.md) — Complete JSON & TypeScript specification for verifiable statements
+- [`docs/EVIDENCE_MODEL.md`](docs/EVIDENCE_MODEL.md) — Merkle evidence tree, leaf hashing, and proof path verification
+- [`docs/WATCH_ARCHITECTURE.md`](docs/WATCH_ARCHITECTURE.md) — Autonomous Statement Watch Keeper monitoring and reconciliation
+- [`SECURITY.md`](SECURITY.md) — Threat model, security invariants I1–I10, and tamper matrix
 - [`docs/DISCOVERY.md`](docs/DISCOVERY.md) — Problem analysis and chain mechanism
 - [`docs/GATE_0_REPORT.md`](docs/GATE_0_REPORT.md) — Gate 0 evidence and thesis validation
 - [`docs/proof.md`](docs/proof.md) — Mathematical proofs, benchmarks, tamper matrix, and Real Devnet Execution

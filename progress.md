@@ -47,5 +47,35 @@
 
 ---
 
-## Next
-**Phase 2 — Chain Ingestion**: Scripts to discover universe, fetch history with pagination, classify updates, and benchmark baseline.
+## 2026-09-24T12:00:00Z — StockLana Upgrade Complete (21/21 Steps)
+
+### Completed
+- **Official Squircle Stock Logo System**:
+  - Implemented squircle badge architecture (`borderRadius: Math.max(7, Math.round(size * 0.28))`, white background, subtle drop shadow, CDN fallback).
+  - Downloaded official Backed.fi token logos into `apps/web/public/logos/tokens/` for all 12 supported instruments (AAPL, TSLA, NVDA, MSFT, AMZN, GOOGL, META, COIN, PLTR, HOOD, QQQ, SPY, OPENAI, SPACEX).
+  - Integrated `StockLogo` across `/`, `/board`, and `/statement`.
+- **Connect Wallet Primary Path**:
+  - Replaced demo-preset default on `/statement` with live browser wallet connection (`useWallet`).
+  - Implemented direct Devnet on-chain proof anchoring and real-time explorer verification.
+- **Statement Watch Keeper System**:
+  - Implemented deterministic finite state machine (`WATCHING` → `CHANGED` → `RECONCILIATION_REQUIRED` → `REVIEW` → `ANCHOR`).
+  - Added configurable policies (`STRICT`, `THRESHOLD`, `SCHEDULED`).
+  - Built interactive `StatementWatch` component with simulated stock split (2-for-1) and transfer triggers.
+- **Deterministic Completeness States**:
+  - Integrated `COMPLETE`, `PARTIAL`, `UNKNOWN`, and `UNVERIFIABLE` states into kernel types, statement generator, and verifier.
+  - Added Check 10 in `@colophon/verifier`.
+- **Line-Item Provenance ("Why is this number?")**:
+  - Mapped every balance and value to contributing on-chain transfer events, slots, blockTimes, and active multiplier intervals.
+  - Built interactive `LineItemProvenanceModal` displaying exact mathematical derivations and Merkle branches.
+- **Evidence Merkle Tree & Commitment Binding**:
+  - Implemented `EvidenceMerkleTree` with canonical leaf hashing and binary proof path generation.
+  - Bound `statementHash` and `evidenceRoot` into 32-byte `statementCommitment`.
+  - Added Check 8 (Merkle proof) and Check 9 (statement commitment) to offline verifier.
+- **Expanded Adversarial Test Suite (B1–B19)**:
+  - Added B12 (partial history as complete), B13 (duplicate tx), B14 (wrong mint), B15 (wrong wallet), B16 (Merkle root substitution), B17 (sibling branch corruption), B18 (engine version mismatch), and B19 (exact boundary activation).
+  - All 19 tests pass in ~31ms.
+- **Repository Standards & Documentation**:
+  - Created `SECURITY.md`, `.github/workflows/ci.yml`, `LICENSE` (MIT).
+  - Created `docs/STATEMENT_SCHEMA.md`, `docs/EVIDENCE_MODEL.md`, `docs/WATCH_ARCHITECTURE.md`.
+  - Updated `README.md`, `docs/proof.md`, `docs/DISCOVERY.md`, `docs/GATE_0_REPORT.md`.
+

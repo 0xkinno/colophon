@@ -8,7 +8,7 @@
     "typecheck": "pnpm --recursive run typecheck",
     "build": "pnpm --recursive run build",
     "verify": "node scripts/verify-bundle.mjs",
-    "benchmark": "node scripts/e4-baseline.mjs"
+    "benchmark": "node scripts/benchmark-baseline.mjs"
   },
   "devDependencies": {
     "playwright": "^1.63.0",

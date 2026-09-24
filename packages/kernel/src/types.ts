@@ -132,6 +132,51 @@ export type HistoricalHoldingsRecord = {
   confidence: EvidenceLabel;
 };
 
+export type CompletenessState = "COMPLETE" | "PARTIAL" | "UNKNOWN" | "UNVERIFIABLE";
+
+export type CompletenessReport = {
+  state: CompletenessState;
+  coverageWindow: {
+    startTs: bigint;
+    endTs: bigint;
+    startSlot: bigint;
+    endSlot: bigint;
+  };
+  missingRanges?: Array<{ startTs: bigint; endTs: bigint; reason: string }>;
+  unresolvedEventsCount: number;
+  explanation: string;
+};
+
+export type LineItemProvenance = {
+  itemKey: string;
+  label: string;
+  valueString: string;
+  rawValue: bigint | number;
+  multiplierUsed: {
+    numerator: bigint;
+    denominator: bigint;
+    floatValue: number;
+    intervalStartTs: bigint;
+    intervalEndTs: bigint | null;
+  };
+  rawBalanceBeforeMultiplier: bigint;
+  contributingEvents: Array<{
+    signature: string;
+    slot: bigint;
+    blockTime: bigint;
+    type: string;
+    delta: bigint;
+  }>;
+  sourceSignatures: string[];
+  slots: bigint[];
+  blockTimes: bigint[];
+  parserVersion: string;
+  engineVersion: string;
+  completeness: CompletenessState;
+  merkleLeafHash: string;
+  merkleLeafIndex: number;
+};
+
 export type Statement = {
   statementId: string;
   wallet: string;
@@ -168,6 +213,9 @@ export type Statement = {
     priceSource: string;
     priceConfidence: EvidenceLabel;
   };
+  completenessReport?: CompletenessReport;
+  provenanceRecord?: Record<string, LineItemProvenance>;
+  evidenceRoot?: string;
   statementHash: string;
   generatedAt: string;
   kernelVersion: string;

@@ -15,20 +15,7 @@ import {
   CheckCircle2,
   Sparkles,
 } from "lucide-react";
-import {
-  OpenAILogo,
-  SpaceXLogo,
-  AndurilLogo,
-  AnthropicLogo,
-  FigureAILogo,
-  KalshiLogo,
-  NeuralinkLogo,
-  PolymarketLogo,
-  SPYxLogo,
-  AAPLxLogo,
-  TSLAxLogo,
-  NVDAxLogo,
-} from "@/components/InstrumentLogos";
+import { StockLogo } from "@/components/StockLogo";
 
 export default function HomePage() {
   return (
@@ -208,9 +195,7 @@ export default function HomePage() {
             <div className="absolute -top-16 -right-16 w-44 h-44 bg-teal-500/15 rounded-full blur-3xl pointer-events-none group-hover:bg-teal-500/25 transition-all" />
             <div className="flex justify-between items-start border-b border-rule/80 pb-4">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-paper shadow-sm border border-teal-500/30 text-teal-700 dark:text-teal-400 group-hover:scale-110 transition-transform">
-                  <OpenAILogo className="w-5 h-5" />
-                </div>
+                <StockLogo symbol="OPENAI" size={44} />
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="font-serif text-xl font-bold text-ink">OpenAI PreStock</span>
@@ -250,9 +235,7 @@ export default function HomePage() {
             <div className="absolute -top-16 -right-16 w-44 h-44 bg-sky-500/15 rounded-full blur-3xl pointer-events-none group-hover:bg-sky-500/25 transition-all" />
             <div className="flex justify-between items-start border-b border-rule/80 pb-4">
               <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-paper shadow-sm border border-sky-500/30 text-sky-700 dark:text-sky-400 group-hover:scale-110 transition-transform">
-                  <SpaceXLogo className="w-5 h-5" />
-                </div>
+                <StockLogo symbol="SPACEX" size={44} />
                 <div>
                   <div className="flex items-center gap-2">
                     <span className="font-serif text-xl font-bold text-ink">SpaceX PreStock</span>
@@ -490,85 +473,61 @@ export default function HomePage() {
             {
               sym: "OPENAI",
               type: "Private Exposure",
-              Logo: OpenAILogo,
-              iconBg: "bg-teal-500/10 text-teal-700 dark:text-teal-400 border border-teal-500/30",
               cardGradient: "from-teal-500/[0.08] via-sheet to-paper border-teal-500/30 hover:border-teal-500 hover:shadow-[0_0_25px_rgba(20,184,166,0.22)]",
             },
             {
               sym: "SPACEX",
               type: "Private Exposure",
-              Logo: SpaceXLogo,
-              iconBg: "bg-sky-500/10 text-sky-700 dark:text-sky-400 border border-sky-500/30",
               cardGradient: "from-sky-500/[0.08] via-sheet to-paper border-sky-500/30 hover:border-sky-500 hover:shadow-[0_0_25px_rgba(14,165,233,0.22)]",
             },
             {
               sym: "ANDURIL",
               type: "Private Exposure",
-              Logo: AndurilLogo,
-              iconBg: "bg-rose-500/10 text-rose-700 dark:text-rose-400 border border-rose-500/30",
               cardGradient: "from-rose-500/[0.08] via-sheet to-paper border-rose-500/30 hover:border-rose-500 hover:shadow-[0_0_25px_rgba(244,63,94,0.22)]",
             },
             {
               sym: "ANTHROPIC",
               type: "Private Exposure",
-              Logo: AnthropicLogo,
-              iconBg: "bg-amber-600/10 text-amber-700 dark:text-amber-400 border border-amber-600/30",
               cardGradient: "from-amber-600/[0.08] via-sheet to-paper border-amber-600/30 hover:border-amber-600 hover:shadow-[0_0_25px_rgba(217,119,6,0.22)]",
             },
             {
               sym: "FIGUREAI",
               type: "Private Exposure",
-              Logo: FigureAILogo,
-              iconBg: "bg-purple-500/10 text-purple-700 dark:text-purple-400 border border-purple-500/30",
               cardGradient: "from-purple-500/[0.08] via-sheet to-paper border-purple-500/30 hover:border-purple-500 hover:shadow-[0_0_25px_rgba(168,85,247,0.22)]",
             },
             {
               sym: "KALSHI",
               type: "Private Exposure",
-              Logo: KalshiLogo,
-              iconBg: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30",
               cardGradient: "from-emerald-500/[0.08] via-sheet to-paper border-emerald-500/30 hover:border-emerald-500 hover:shadow-[0_0_25px_rgba(16,185,129,0.22)]",
             },
             {
               sym: "NEURALINK",
               type: "Private Exposure",
-              Logo: NeuralinkLogo,
-              iconBg: "bg-fuchsia-500/10 text-fuchsia-700 dark:text-fuchsia-400 border border-fuchsia-500/30",
               cardGradient: "from-fuchsia-500/[0.08] via-sheet to-paper border-fuchsia-500/30 hover:border-fuchsia-500 hover:shadow-[0_0_25px_rgba(217,70,239,0.22)]",
             },
             {
               sym: "POLYMARKET",
               type: "Private Exposure",
-              Logo: PolymarketLogo,
-              iconBg: "bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-500/30",
               cardGradient: "from-blue-600/[0.08] via-sheet to-paper border-blue-500/30 hover:border-blue-500 hover:shadow-[0_0_25px_rgba(59,130,246,0.22)]",
             },
             {
               sym: "SPYx",
               type: "Public Equity",
-              Logo: SPYxLogo,
-              iconBg: "bg-green-600/10 text-green-700 dark:text-green-400 border border-green-600/30",
               cardGradient: "from-green-600/[0.08] via-sheet to-paper border-green-600/30 hover:border-green-600 hover:shadow-[0_0_25px_rgba(22,163,74,0.22)]",
             },
             {
               sym: "AAPLx",
               type: "Public Equity",
-              Logo: AAPLxLogo,
-              iconBg: "bg-zinc-500/10 text-zinc-800 dark:text-zinc-200 border border-zinc-400/30",
               cardGradient: "from-zinc-500/[0.08] via-sheet to-paper border-zinc-400/40 hover:border-zinc-500 hover:shadow-[0_0_25px_rgba(113,113,122,0.22)]",
             },
             {
               sym: "TSLAx",
               type: "Public Equity",
-              Logo: TSLAxLogo,
-              iconBg: "bg-red-500/10 text-red-700 dark:text-red-400 border border-red-500/30",
               cardGradient: "from-red-600/[0.08] via-sheet to-paper border-red-500/30 hover:border-red-500 hover:shadow-[0_0_25px_rgba(239,68,68,0.22)]",
             },
             {
               sym: "NVDAx",
               type: "Public Equity",
-              Logo: NVDAxLogo,
-              iconBg: "bg-lime-500/10 text-lime-700 dark:text-lime-400 border border-lime-500/30",
               cardGradient: "from-lime-600/[0.08] via-sheet to-paper border-lime-500/30 hover:border-lime-500 hover:shadow-[0_0_25px_rgba(132,204,22,0.22)]",
             },
           ].map((item) => (
@@ -577,9 +536,7 @@ export default function HomePage() {
               className={`relative group p-4 rounded-xl border bg-gradient-to-br shadow-sm hover:-translate-y-1 transition-all duration-300 space-y-2.5 overflow-hidden ${item.cardGradient}`}
             >
               <div className="flex items-center gap-3">
-                <div className={`p-2 rounded-xl shadow-xs shrink-0 group-hover:scale-110 transition-transform ${item.iconBg}`}>
-                  <item.Logo className="w-5 h-5" />
-                </div>
+                <StockLogo symbol={item.sym} size={38} className="group-hover:scale-105 transition-transform" />
                 <div className="min-w-0 flex-1">
                   <div className="font-bold text-ink text-sm tracking-tight truncate">{item.sym}</div>
                   <div className="text-[11px] text-soft font-mono truncate">{item.type}</div>

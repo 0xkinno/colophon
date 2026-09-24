@@ -224,4 +224,112 @@ describe("Verifier Tamper Campaign (B1–B15)", () => {
     assert.equal(report.passed, false, "Must fail verification on non-standard label");
     assert.equal(report.tamperDetected, true);
   });
+
+  test("B12: Adversarial — Partial history falsely presented as COMPLETE", () => {
+    const bundle = createValidBundle();
+    bundle.statement.completenessReport = {
+      state: "COMPLETE",
+      coverageWindow: {
+        startTs: GENESIS_TS,
+        endTs: EFFECTIVE_TS + 100n,
+        startSlot: 300000000n,
+        endSlot: 350000100n,
+      },
+      missingRanges: [
+        {
+          startTs: GENESIS_TS + 100n,
+          endTs: GENESIS_TS + 200n,
+          reason: "RPC rate limit page drop",
+        },
+      ],
+      unresolvedEventsCount: 2,
+      explanation: "Dropped 2 transfer pages during ingestion",
+    };
+
+    const report = verifyProofBundleOffline(bundle);
+    assert.equal(report.passed, false, "Must reject incomplete history falsely tagged as COMPLETE");
+    assert.equal(report.tamperDetected, true);
+  });
+
+  test("B13: Adversarial — Duplicated transaction in event stream", () => {
+    const bundle = createValidBundle();
+    // Tamper: duplicate event[0]
+    bundle.sourceEvents.push(bundle.sourceEvents[0]);
+
+    const report = verifyProofBundleOffline(bundle);
+    assert.equal(report.passed, false, "Must reject duplicated transaction in event stream");
+    assert.equal(report.tamperDetected, true);
+  });
+
+  test("B14: Adversarial — Wrong mint address with identical symbol", () => {
+    const bundle = createValidBundle();
+    bundle.statement.mint = "FakeMint111111111111111111111111111111111111";
+
+    const report = verifyProofBundleOffline(bundle);
+    assert.equal(report.passed, false, "Must reject statement binding with mismatched mint");
+    assert.equal(report.tamperDetected, true);
+  });
+
+  test("B15: Adversarial — Wrong wallet with identical token balance", () => {
+    const bundle = createValidBundle();
+    bundle.statement.wallet = "WrongWallet999999999999999999999999999999999";
+
+    const report = verifyProofBundleOffline(bundle);
+    assert.equal(report.passed, false, "Must reject statement binding with mismatched wallet");
+    assert.equal(report.tamperDetected, true);
+  });
+
+  test("B16: Adversarial — Evidence Merkle root substitution attack", () => {
+    const bundle = createValidBundle();
+    bundle.hashes.evidenceRoot = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";
+
+    const report = verifyProofBundleOffline(bundle);
+    assert.equal(report.passed, false, "Must reject substituted Merkle root");
+    assert.equal(report.tamperDetected, true);
+  });
+
+  test("B17: Adversarial — Merkle proof sibling branch substitution", () => {
+    const bundle = createValidBundle();
+    if (bundle.merkleProof && bundle.merkleProof.siblings.length > 0) {
+      bundle.merkleProof.siblings[0].hash = "deadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeefdeadbeef";
+      const report = verifyProofBundleOffline(bundle);
+      assert.equal(report.passed, false, "Must reject corrupted Merkle proof sibling branch");
+      assert.equal(report.tamperDetected, true);
+    }
+  });
+
+  test("B18: Adversarial — Anchor commitment mismatch on altered engine version", () => {
+    const bundle = createValidBundle();
+    bundle.statement.kernelVersion = "2.0.0-tampered";
+
+    const report = verifyProofBundleOffline(bundle);
+    assert.equal(report.passed, false, "Must reject bundle when engine version alters commitment");
+    assert.equal(report.tamperDetected, true);
+  });
+
+  test("B19: Temporal Boundary — Multiplier effective exactly at T vs T+1", () => {
+    // Exact boundary test: at exactly EFFECTIVE_TS, newMultiplier is ACTIVE (>= rule)
+    const holdingsExact = reconstructHoldingsAt({
+      wallet: WALLET,
+      mint: MINT,
+      decimals: 9,
+      asOfTs: EFFECTIVE_TS, // exactly at activation
+      transfers: events,
+      timeline,
+      naiveCurrentMultiplierFloat: 1.0,
+    });
+    assert.equal(holdingsExact.activeMultiplierNumerator, 14861347n, "At exact effective timestamp T, new multiplier MUST activate");
+
+    // One second prior: old multiplier MUST remain active
+    const holdingsBefore = reconstructHoldingsAt({
+      wallet: WALLET,
+      mint: MINT,
+      decimals: 9,
+      asOfTs: EFFECTIVE_TS - 1n,
+      transfers: events,
+      timeline,
+      naiveCurrentMultiplierFloat: 1.0,
+    });
+    assert.equal(holdingsBefore.activeMultiplierNumerator, 10000000n, "At T - 1s, old multiplier MUST remain active");
+  });
 });

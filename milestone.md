@@ -99,4 +99,21 @@ Key deliverables:
 - [x] All 26 judge-first README.md sections complete matching §50
 - [x] `pnpm run typecheck` passes with 0 errors across 7 workspace packages and `apps/web`
 - [x] `pnpm run build` generates clean production bundles under 101 kB
-- [x] `pnpm test` passes all 21 unit tests (10/10 Invariants, 11/11 Tamper attacks)
+- [x] `pnpm test` passes all unit tests (10/10 Invariants, 19/19 Tamper attacks)
+
+---
+
+## Milestone 7 — StockLana Upgrade (21/21 Steps) ✓
+**Target**: Institutional-grade parity across stock logos, Merkle evidence, line-item provenance, and statement watch.
+**Status**: COMPLETE
+**Date**: 2026-09-24
+
+Key deliverables:
+- [x] Official squircle stock logo system (Backed.fi assets for 12 instruments)
+- [x] Connect Wallet as primary path for real user statement generation
+- [x] Autonomous Statement Watch Keeper (`WATCHING` → `CHANGED` → `RECONCILIATION_REQUIRED` → `REVIEW` → `ANCHOR`)
+- [x] Deterministic completeness states (`COMPLETE`, `PARTIAL`, `UNKNOWN`, `UNVERIFIABLE`)
+- [x] Line-item provenance modals explaining mathematical derivations and source events
+- [x] Evidence Merkle Tree with proof paths and on-chain statement commitment binding
+- [x] Adversarial test suite expanded to B1–B19 (19/19 tests PASS)
+- [x] Complete specifications: `SECURITY.md`, `STATEMENT_SCHEMA.md`, `EVIDENCE_MODEL.md`, `WATCH_ARCHITECTURE.md`, `.github/workflows/ci.yml`, `LICENSE` (MIT)

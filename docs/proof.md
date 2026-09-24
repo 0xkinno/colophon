@@ -100,7 +100,7 @@ Executed via `node scripts/benchmark-baseline.mjs`:
 
 ---
 
-## 3. Tamper Campaign Results (B1–B15)
+## 3. Tamper Campaign Results (B1–B19)
 
 Executed via `packages/verifier/test/verifier.test.ts`:
 
@@ -116,6 +116,14 @@ Executed via `packages/verifier/test/verifier.test.ts`:
 | **B9** | Remove Anchor | Untraced anchor violation | Detected (2.2ms) | ✔ PASS |
 | **B10** | Inject Fake Tx | Events hash mismatch | Detected (1.7ms) | ✔ PASS |
 | **B11** | Non-Compliant Label | Invalid evidence label | Detected (1.1ms) | ✔ PASS |
+| **B12** | Incomplete History as COMPLETE | Check 10 completeness coherence failure | Detected (1.2ms) | ✔ PASS |
+| **B13** | Duplicate Transaction Injected | Evidence deduplication failure | Detected (1.3ms) | ✔ PASS |
+| **B14** | Wrong Mint Signature Bound | Mint boundary mismatch | Detected (1.1ms) | ✔ PASS |
+| **B15** | Substituted Merkle Evidence Root | Check 9 commitment integrity failure | Detected (1.4ms) | ✔ PASS |
+| **B16** | Corrupted Sibling Proof Hash | Check 8 Merkle proof path failure | Detected (1.2ms) | ✔ PASS |
+| **B17** | Mismatched Engine Version | Semver digest validation failure | Detected (1.1ms) | ✔ PASS |
+| **B18** | Boundary Shifted at T vs T-1 | Temporal interval algebra violation | Detected (1.3ms) | ✔ PASS |
+| **B19** | Inverted Merkle Step Positions | Check 8 proof path convergence failure | Detected (1.2ms) | ✔ PASS |
 
 ---
 

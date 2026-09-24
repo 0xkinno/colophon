@@ -5,7 +5,7 @@
       "kernelVersion": "0.1.0",
       "gitCommit": "HEAD",
       "rpcSource": "mainnet-beta",
-      "generatedAt": "2026-09-24T01:13:12.891Z",
+      "generatedAt": "2026-09-24T11:14:08.582Z",
       "wallet": "Holder1111111111111111111111111111111111111",
       "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
       "asOfTs": "1784306800",
@@ -49,10 +49,11 @@
         "priceSource": "prestocks-api",
         "priceConfidence": "OFFCHAIN"
       },
-      "generatedAt": "2026-09-24T01:13:12.889Z",
+      "generatedAt": "2026-09-24T11:14:08.580Z",
       "kernelVersion": "0.1.0",
       "confidence": "MEASURED",
-      "statementHash": "4483f8bc35e7c28e8d4b515a917950b168b304ce0985fcd81d70c2298a38e2ae"
+      "statementHash": "4483f8bc35e7c28e8d4b515a917950b168b304ce0985fcd81d70c2298a38e2ae",
+      "evidenceRoot": "4441d363e7662c33672307349abf70330a9adaa1319a0b32b734a76036b7a63e"
     },
     "sourceEvents": [
       {
@@ -88,11 +89,48 @@
     "hashes": {
       "statementHash": "4483f8bc35e7c28e8d4b515a917950b168b304ce0985fcd81d70c2298a38e2ae",
       "sourceEventsHash": "4e281c6fcd9486839cacdf12768e108a014db69856b89f882fb7103cc15c1023",
-      "bundleHash": "acf0932ef5f3a794f74f1b056619922882cbbc9cef1e36e7a911556bb80fadfc"
+      "bundleHash": "acf0932ef5f3a794f74f1b056619922882cbbc9cef1e36e7a911556bb80fadfc",
+      "evidenceRoot": "4441d363e7662c33672307349abf70330a9adaa1319a0b32b734a76036b7a63e",
+      "statementCommitment": "6a58b027173b5fbf3d6dcf77ef45b39e9cb0013f4d5caba5e5813c1eb360763f"
+    },
+    "merkleProof": {
+      "leafHash": "268a4491e8faa135db743160a945d0273e46cc8c540bb0f8d334b7dd5e9d5c9a",
+      "leafIndex": 0,
+      "siblings": [
+        {
+          "hash": "e60ad5fa264d14007ec56bc4ed96219c90d76ca3fe546078b60717b7d5c55353",
+          "position": "right"
+        }
+      ],
+      "root": "4441d363e7662c33672307349abf70330a9adaa1319a0b32b734a76036b7a63e"
+    },
+    "merkleProofs": {
+      "primary": {
+        "leafHash": "268a4491e8faa135db743160a945d0273e46cc8c540bb0f8d334b7dd5e9d5c9a",
+        "leafIndex": 0,
+        "siblings": [
+          {
+            "hash": "e60ad5fa264d14007ec56bc4ed96219c90d76ca3fe546078b60717b7d5c55353",
+            "position": "right"
+          }
+        ],
+        "root": "4441d363e7662c33672307349abf70330a9adaa1319a0b32b734a76036b7a63e"
+      },
+      "secondary": {
+        "leafHash": "e60ad5fa264d14007ec56bc4ed96219c90d76ca3fe546078b60717b7d5c55353",
+        "leafIndex": 1,
+        "siblings": [
+          {
+            "hash": "268a4491e8faa135db743160a945d0273e46cc8c540bb0f8d334b7dd5e9d5c9a",
+            "position": "left"
+          }
+        ],
+        "root": "4441d363e7662c33672307349abf70330a9adaa1319a0b32b734a76036b7a63e"
+      }
     },
     "offlineVerification": {
       "passed": true,
-      "checkedAt": "2026-09-24T01:13:12.891Z",
+      "checkedAt": "2026-09-24T11:14:08.589Z",
       "checks": {
         "statementHashMatches": true,
         "eventsHashMatches": true,
@@ -104,7 +142,7 @@
     "passed": true,
     "bundleId": "bundle-6dca0e55ddbfda53",
     "statementId": "stmt-619c6d4ab0700519",
-    "timestamp": "2026-09-24T01:13:12.892Z",
+    "timestamp": "2026-09-24T11:14:08.591Z",
     "checks": [
       {
         "checkId": "STMT_HASH",
@@ -147,6 +185,18 @@
         "name": "Evidence Label Integrity (I10)",
         "passed": true,
         "message": "PASS: All 2 labels strictly adhere to 6-tag standard"
+      },
+      {
+        "checkId": "MERKLE_PROOF",
+        "name": "Evidence Merkle Tree Root & Path Integrity",
+        "passed": true,
+        "message": "PASS: Merkle proof verified against evidenceRoot (4441d363e7662c33...)"
+      },
+      {
+        "checkId": "STATEMENT_COMMITMENT",
+        "name": "Cryptographic Statement Commitment Binding",
+        "passed": true,
+        "message": "PASS: Commitment digest binds statementHash + evidenceRoot + mint + wallet + timestamp"
       }
     ],
     "tamperDetected": false

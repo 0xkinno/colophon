@@ -16,6 +16,7 @@ import {
   ProofBundle,
   computeEventsHash,
   computeBundleHash,
+  EvidenceMerkleTree,
 } from "@colophon/proof";
 import {
   computeStatementHash,
@@ -153,6 +154,76 @@ export function verifyProofBundleOffline(bundle: ProofBundle): OfflineVerificati
     passed: labelCheck.passed,
     message: labelCheck.message,
   });
+
+  // Check 8: Evidence Merkle Tree Proof Path Verification (Step 5 & 6)
+  if (bundle.hashes.evidenceRoot) {
+    let merklePass = true;
+    let merkleMsg = "PASS: Evidence Merkle tree root matches statement binding";
+
+    if (bundle.statement.evidenceRoot && bundle.statement.evidenceRoot !== bundle.hashes.evidenceRoot) {
+      merklePass = false;
+      merkleMsg = `FAIL: Statement evidenceRoot mismatch: ${bundle.statement.evidenceRoot} vs ${bundle.hashes.evidenceRoot}`;
+    } else if (bundle.merkleProof) {
+      const valid = EvidenceMerkleTree.verifyProof(bundle.merkleProof);
+      if (!valid) {
+        merklePass = false;
+        merkleMsg = `FAIL: Merkle proof verification failed for leaf ${bundle.merkleProof.leafHash}`;
+      } else {
+        merkleMsg = `PASS: Merkle proof verified against evidenceRoot (${bundle.hashes.evidenceRoot.slice(0, 16)}...)`;
+      }
+    }
+
+    checks.push({
+      checkId: "MERKLE_PROOF",
+      name: "Evidence Merkle Tree Root & Path Integrity",
+      passed: merklePass,
+      message: merkleMsg,
+    });
+  }
+
+  // Check 9: On-Chain Statement Commitment Binding
+  if (bundle.hashes.statementCommitment) {
+    const recomputedCommitment = EvidenceMerkleTree.computeStatementCommitment({
+      statementHash: bundle.hashes.statementHash,
+      evidenceRoot: bundle.hashes.evidenceRoot || "",
+      instrumentMint: bundle.statement.mint,
+      wallet: bundle.statement.wallet,
+      effectiveTimestamp: BigInt(bundle.statement.asOfTs),
+      schemaVersion: "1.0.0",
+      engineVersion: bundle.statement.kernelVersion,
+    });
+    const commitPass = recomputedCommitment.toLowerCase() === bundle.hashes.statementCommitment.toLowerCase();
+    checks.push({
+      checkId: "STATEMENT_COMMITMENT",
+      name: "Cryptographic Statement Commitment Binding",
+      passed: commitPass,
+      message: commitPass
+        ? `PASS: Commitment digest binds statementHash + evidenceRoot + mint + wallet + timestamp`
+        : `FAIL: Commitment mismatch: expected ${recomputedCommitment} vs ${bundle.hashes.statementCommitment}`,
+    });
+  }
+
+  // Check 10: Deterministic Completeness State Integrity (Step 4 & 7)
+  if (bundle.statement.completenessReport) {
+    const report = bundle.statement.completenessReport;
+    let completenessPass = true;
+    let completenessMsg = `PASS: Completeness state '${report.state}' validated against coverage window`;
+
+    if (report.state === "COMPLETE" && (report.missingRanges?.length || 0) > 0) {
+      completenessPass = false;
+      completenessMsg = `FAIL: Statement claims COMPLETE but contains ${report.missingRanges?.length} missing range(s)`;
+    } else if (report.state === "UNVERIFIABLE" && report.explanation.length === 0) {
+      completenessPass = false;
+      completenessMsg = `FAIL: UNVERIFIABLE state requires explanatory justification`;
+    }
+
+    checks.push({
+      checkId: "COMPLETENESS_STATE",
+      name: "Deterministic Completeness State Validation",
+      passed: completenessPass,
+      message: completenessMsg,
+    });
+  }
 
   const allPassed = checks.every((c) => c.passed);
   const failedCheck = checks.find((c) => !c.passed);

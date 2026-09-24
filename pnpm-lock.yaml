@@ -29,6 +29,9 @@ importers:
       '@colophon/verifier':
         specifier: workspace:*
         version: link:../../packages/verifier
+      '@colophon/watch':
+        specifier: workspace:*
+        version: link:../../packages/watch
       '@solana/wallet-adapter-base':
         specifier: ^0.9.28
         version: 0.9.28(@solana/web3.js@1.99.0(bufferutil@4.1.0)(typescript@5.9.3))

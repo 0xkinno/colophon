@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { KNOWN_UNIVERSE } from "@colophon/instruments";
 import { AlertTriangle, CheckCircle2, Clock, ExternalLink, Filter } from "lucide-react";
+import { StockLogo } from "@/components/StockLogo";
 
 // Real measured chain data from E1.5 scan (Solana mainnet-beta, Epoch 1041)
 const INSTRUMENT_STATES: Record<string, {
@@ -213,9 +214,17 @@ export default function BoardPage() {
                 return (
                   <tr key={inst.symbol} className="hover:bg-paper/60 transition-colors">
                     <td className="p-4">
-                      <div className="font-bold text-ink font-sans text-sm">{inst.name}</div>
-                      <div className="text-[11px] text-soft truncate max-w-[180px]">
-                        {inst.mint}
+                      <div className="flex items-center gap-3">
+                        <StockLogo symbol={inst.symbol} size={36} />
+                        <div>
+                          <div className="font-bold text-ink font-sans text-sm flex items-center gap-2">
+                            <span>{inst.name}</span>
+                            <span className="font-mono text-[10px] text-soft bg-paper px-1.5 py-0.5 rounded border border-rule">{inst.symbol}</span>
+                          </div>
+                          <div className="text-[11px] text-soft truncate max-w-[180px]">
+                            {inst.mint}
+                          </div>
+                        </div>
                       </div>
                     </td>
                     <td className="p-4">
