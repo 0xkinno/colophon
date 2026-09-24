@@ -33,6 +33,7 @@ async function runE2ETests() {
     // ----------------------------------------------------
     console.log("\n--- Testing Landing Page (/) ---");
     await page.goto(`${BASE_URL}/`, { waitUntil: "domcontentloaded" });
+    await page.waitForTimeout(1500);
 
     const title = await page.title();
     record("LANDING_TITLE", title.toUpperCase().includes("COLOPHON"), `Title: "${title}"`);
