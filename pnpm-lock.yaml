@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      next:
+        specifier: ^14.2.24
+        version: 14.2.35
       playwright:
         specifier: ^1.63.0
         version: 1.63.0
