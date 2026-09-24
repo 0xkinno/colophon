@@ -13,7 +13,22 @@ import {
   Database,
   Layers,
   CheckCircle2,
+  Sparkles,
 } from "lucide-react";
+import {
+  OpenAILogo,
+  SpaceXLogo,
+  AndurilLogo,
+  AnthropicLogo,
+  FigureAILogo,
+  KalshiLogo,
+  NeuralinkLogo,
+  PolymarketLogo,
+  SPYxLogo,
+  AAPLxLogo,
+  TSLAxLogo,
+  NVDAxLogo,
+} from "@/components/InstrumentLogos";
 
 export default function HomePage() {
   return (
@@ -50,7 +65,7 @@ export default function HomePage() {
           </h1>
 
           <p className="text-base sm:text-lg text-soft leading-relaxed max-w-2xl font-normal">
-            Solana Token-2022 <span className="font-semibold text-ink">Scaled UI Amount</span> (<code className="bg-paper/90 px-1.5 py-0.5 rounded border border-rule font-mono text-xs font-semibold text-prussian">ScaledUiAmountConfig</code>) multiplies token balances to account for stock splits and corporate actions. When effective timestamps pass, the stored multiplier field remains stale.
+            Solana Token-2022 <span className="font-semibold text-ink">Scaled UI Amount</span> multiplies token balances to account for stock splits and corporate actions. When effective timestamps pass, the stored multiplier field remains stale.
           </p>
 
           {/* The Two-Halves Line Formula Display */}
@@ -109,27 +124,54 @@ export default function HomePage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
-          <div className="bg-sheet p-6 rounded-xl border border-rule space-y-2">
-            <span className="font-mono text-xs text-soft uppercase">The Naive Assumption</span>
-            <div className="font-serif text-lg font-bold text-ink">Static Multiplier</div>
+          {/* Box 1: Static Multiplier (Amber Caution) */}
+          <div className="relative group p-6 rounded-2xl border border-amber-500/30 bg-gradient-to-br from-amber-500/[0.07] via-sheet to-paper shadow-sm hover:border-amber-500 hover:shadow-[0_0_30px_rgba(245,158,11,0.22)] hover:-translate-y-1.5 transition-all duration-300 space-y-3 overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600 opacity-60 group-hover:opacity-100 transition-opacity" />
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[11px] font-semibold text-amber-800 dark:text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2.5 py-0.5 rounded-full uppercase tracking-wider inline-flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                The Naive Assumption
+              </span>
+            </div>
+            <div className="font-serif text-xl font-bold text-ink group-hover:text-amber-900 dark:group-hover:text-amber-200 transition-colors">
+              Static Multiplier
+            </div>
             <p className="text-xs text-soft leading-relaxed">
-              Standard RPC readers evaluate <code className="text-ink">account.multiplier</code> once.
+              Standard RPC readers evaluate <code className="text-ink font-mono bg-paper/80 px-1 py-0.5 rounded border border-rule/60">account.multiplier</code> once.
               When an issuer schedules a split effective July 17, readers apply the new ratio to historical snapshots before July 17, corrupting past tax years.
             </p>
           </div>
 
-          <div className="bg-sheet p-6 rounded-xl border border-rule space-y-2">
-            <span className="font-mono text-xs text-soft uppercase">The Issuer Authority</span>
-            <div className="font-serif text-lg font-bold text-ink">Decoupled Activation</div>
+          {/* Box 2: Decoupled Activation (Indigo Authority) */}
+          <div className="relative group p-6 rounded-2xl border border-indigo-500/30 bg-gradient-to-br from-indigo-500/[0.07] via-sheet to-paper shadow-sm hover:border-indigo-500 hover:shadow-[0_0_30px_rgba(99,102,241,0.22)] hover:-translate-y-1.5 transition-all duration-300 space-y-3 overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-400 via-indigo-500 to-indigo-600 opacity-60 group-hover:opacity-100 transition-opacity" />
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[11px] font-semibold text-indigo-800 dark:text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 rounded-full uppercase tracking-wider inline-flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
+                The Issuer Authority
+              </span>
+            </div>
+            <div className="font-serif text-xl font-bold text-ink group-hover:text-indigo-900 dark:group-hover:text-indigo-200 transition-colors">
+              Decoupled Activation
+            </div>
             <p className="text-xs text-soft leading-relaxed">
-              Token-2022 mint accounts store both <code className="text-ink">multiplier</code> and <code className="text-ink">newMultiplier</code> with a Unix effective timestamp.
-              The on-chain <code className="text-ink">multiplier</code> field never updates itself.
+              Token-2022 mint accounts store both <code className="text-ink font-mono bg-paper/80 px-1 py-0.5 rounded border border-rule/60">multiplier</code> and <code className="text-ink font-mono bg-paper/80 px-1 py-0.5 rounded border border-rule/60">newMultiplier</code> with a Unix effective timestamp.
+              The on-chain <code className="text-ink font-mono bg-paper/80 px-1 py-0.5 rounded border border-rule/60">multiplier</code> field never updates itself.
             </p>
           </div>
 
-          <div className="bg-sheet p-6 rounded-xl border border-rule space-y-2">
-            <span className="font-mono text-xs text-soft uppercase">The Colophon Engine</span>
-            <div className="font-serif text-lg font-bold text-ink">Verifiable Timeline</div>
+          {/* Box 3: Verifiable Timeline (Emerald Proof) */}
+          <div className="relative group p-6 rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/[0.07] via-sheet to-paper shadow-sm hover:border-emerald-500 hover:shadow-[0_0_30px_rgba(16,185,129,0.22)] hover:-translate-y-1.5 transition-all duration-300 space-y-3 overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-600 opacity-60 group-hover:opacity-100 transition-opacity" />
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-[11px] font-semibold text-emerald-800 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2.5 py-0.5 rounded-full uppercase tracking-wider inline-flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                The Colophon Engine
+              </span>
+            </div>
+            <div className="font-serif text-xl font-bold text-ink group-hover:text-emerald-900 dark:group-hover:text-emerald-200 transition-colors">
+              Verifiable Timeline
+            </div>
             <p className="text-xs text-soft leading-relaxed">
               Colophon pieces together continuous non-overlapping intervals, recovers raw integer transfers, and resolves the exact active multiplier for second T backed by a cryptographic receipt.
             </p>
@@ -162,68 +204,86 @@ export default function HomePage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* OpenAI Case */}
-          <div className="bg-sheet p-6 rounded-xl border border-breach/30 shadow-sm space-y-4">
-            <div className="flex justify-between items-center border-b border-rule pb-3">
-              <div>
-                <span className="font-serif text-xl font-bold text-ink">OpenAI PreStock</span>
-                <span className="block text-xs font-mono text-soft break-all">PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF</span>
+          <div className="relative group p-6 sm:p-7 rounded-2xl border border-teal-500/30 bg-gradient-to-br from-teal-500/[0.08] via-sheet to-paper shadow-md hover:border-teal-500/80 hover:shadow-[0_0_35px_rgba(20,184,166,0.22)] hover:-translate-y-1 transition-all duration-300 space-y-5 overflow-hidden">
+            <div className="absolute -top-16 -right-16 w-44 h-44 bg-teal-500/15 rounded-full blur-3xl pointer-events-none group-hover:bg-teal-500/25 transition-all" />
+            <div className="flex justify-between items-start border-b border-rule/80 pb-4">
+              <div className="flex items-center gap-3">
+                <div className="p-2.5 rounded-xl bg-paper shadow-sm border border-teal-500/30 text-teal-700 dark:text-teal-400 group-hover:scale-110 transition-transform">
+                  <OpenAILogo className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-serif text-xl font-bold text-ink">OpenAI PreStock</span>
+                    <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-teal-500/10 text-teal-700 dark:text-teal-400 border border-teal-500/20 font-bold">PreStock</span>
+                  </div>
+                  <span className="block text-xs font-mono text-soft break-all mt-0.5">PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF</span>
+                </div>
               </div>
-              <span className="px-2.5 py-1 rounded bg-breach/10 text-breach font-mono text-xs font-bold">
+              <span className="px-3 py-1 rounded-full bg-rose-500/15 text-rose-600 border border-rose-500/30 font-mono text-xs font-bold shadow-sm shrink-0 animate-pulse">
                 +48.61% ERROR
               </span>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 font-mono text-xs">
-              <div>
-                <span className="text-soft">Stale Field:</span>
-                <p className="text-ink font-bold text-sm">1.0000000</p>
+            <div className="grid grid-cols-3 gap-3 font-mono text-xs">
+              <div className="p-3 bg-paper/80 backdrop-blur-sm rounded-xl border border-rule/80">
+                <span className="text-soft text-[11px] block">Stale Field:</span>
+                <p className="text-ink font-bold text-sm mt-0.5">1.0000000</p>
               </div>
-              <div>
-                <span className="text-soft">Active Mult:</span>
-                <p className="text-verified font-bold text-sm">1.4861347</p>
+              <div className="p-3 bg-paper/80 backdrop-blur-sm rounded-xl border border-teal-500/30">
+                <span className="text-teal-700 dark:text-teal-400 text-[11px] block font-semibold">Active Mult:</span>
+                <p className="text-teal-600 dark:text-teal-300 font-bold text-sm mt-0.5">1.4861347</p>
               </div>
-              <div>
-                <span className="text-soft">Days Stale:</span>
-                <p className="text-breach font-bold text-sm">68.3 Days</p>
+              <div className="p-3 bg-paper/80 backdrop-blur-sm rounded-xl border border-rose-500/30">
+                <span className="text-rose-600 text-[11px] block font-semibold">Days Stale:</span>
+                <p className="text-rose-600 font-bold text-sm mt-0.5">68.3 Days</p>
               </div>
             </div>
 
-            <div className="p-3 bg-paper rounded border border-rule font-mono text-xs flex justify-between items-center">
-              <span className="text-soft">Supply Dollar Misstatement:</span>
-              <span className="text-breach font-bold text-sm">+$1,210,389.59</span>
+            <div className="p-3.5 bg-gradient-to-r from-rose-500/10 via-paper to-paper rounded-xl border border-rose-500/20 font-mono text-xs flex justify-between items-center shadow-inner">
+              <span className="text-soft font-medium">Supply Dollar Misstatement:</span>
+              <span className="text-rose-600 font-bold text-sm tracking-tight">+$1,210,389.59</span>
             </div>
           </div>
 
           {/* SpaceX Case */}
-          <div className="bg-sheet p-6 rounded-xl border border-breach/30 shadow-sm space-y-4">
-            <div className="flex justify-between items-center border-b border-rule pb-3">
-              <div>
-                <span className="font-serif text-xl font-bold text-ink">SpaceX PreStock</span>
-                <span className="block text-xs font-mono text-soft break-all">PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh</span>
+          <div className="relative group p-6 sm:p-7 rounded-2xl border border-sky-500/30 bg-gradient-to-br from-sky-500/[0.08] via-sheet to-paper shadow-md hover:border-sky-500/80 hover:shadow-[0_0_35px_rgba(14,165,233,0.22)] hover:-translate-y-1 transition-all duration-300 space-y-5 overflow-hidden">
+            <div className="absolute -top-16 -right-16 w-44 h-44 bg-sky-500/15 rounded-full blur-3xl pointer-events-none group-hover:bg-sky-500/25 transition-all" />
+            <div className="flex justify-between items-start border-b border-rule/80 pb-4">
+              <div className="flex items-center gap-3">
+                <div className="p-2.5 rounded-xl bg-paper shadow-sm border border-sky-500/30 text-sky-700 dark:text-sky-400 group-hover:scale-110 transition-transform">
+                  <SpaceXLogo className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-serif text-xl font-bold text-ink">SpaceX PreStock</span>
+                    <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-sky-500/10 text-sky-700 dark:text-sky-400 border border-sky-500/20 font-bold">PreStock</span>
+                  </div>
+                  <span className="block text-xs font-mono text-soft break-all mt-0.5">PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh</span>
+                </div>
               </div>
-              <span className="px-2.5 py-1 rounded bg-breach/10 text-breach font-mono text-xs font-bold">
+              <span className="px-3 py-1 rounded-full bg-rose-500/15 text-rose-600 border border-rose-500/30 font-mono text-xs font-bold shadow-sm shrink-0 animate-pulse">
                 +400.00% (5× WRONG)
               </span>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 font-mono text-xs">
-              <div>
-                <span className="text-soft">Stale Field:</span>
-                <p className="text-ink font-bold text-sm">1.0000000</p>
+            <div className="grid grid-cols-3 gap-3 font-mono text-xs">
+              <div className="p-3 bg-paper/80 backdrop-blur-sm rounded-xl border border-rule/80">
+                <span className="text-soft text-[11px] block">Stale Field:</span>
+                <p className="text-ink font-bold text-sm mt-0.5">1.0000000</p>
               </div>
-              <div>
-                <span className="text-soft">Active Mult:</span>
-                <p className="text-verified font-bold text-sm">5.0000000</p>
+              <div className="p-3 bg-paper/80 backdrop-blur-sm rounded-xl border border-sky-500/30">
+                <span className="text-sky-700 dark:text-sky-400 text-[11px] block font-semibold">Active Mult:</span>
+                <p className="text-sky-600 dark:text-sky-300 font-bold text-sm mt-0.5">5.0000000</p>
               </div>
-              <div>
-                <span className="text-soft">Days Stale:</span>
-                <p className="text-breach font-bold text-sm">105.8 Days</p>
+              <div className="p-3 bg-paper/80 backdrop-blur-sm rounded-xl border border-rose-500/30">
+                <span className="text-rose-600 text-[11px] block font-semibold">Days Stale:</span>
+                <p className="text-rose-600 font-bold text-sm mt-0.5">105.8 Days</p>
               </div>
             </div>
 
-            <div className="p-3 bg-paper rounded border border-rule font-mono text-xs flex justify-between items-center">
-              <span className="text-soft">Supply Dollar Misstatement:</span>
-              <span className="text-breach font-bold text-sm">+$4,055,186.90</span>
+            <div className="p-3.5 bg-gradient-to-r from-rose-500/10 via-paper to-paper rounded-xl border border-rose-500/20 font-mono text-xs flex justify-between items-center shadow-inner">
+              <span className="text-soft font-medium">Supply Dollar Misstatement:</span>
+              <span className="text-rose-600 font-bold text-sm tracking-tight">+$4,055,186.90</span>
             </div>
           </div>
         </div>
@@ -233,7 +293,7 @@ export default function HomePage() {
       <section className="space-y-6 border-b border-rule pb-16">
         <div>
           <span className="text-xs font-mono uppercase tracking-wider text-soft font-semibold">
-            Kernel Pipeline (§8)
+            Kernel Pipeline
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl text-ink font-bold tracking-tight">
             How Reconstruction Works
@@ -244,69 +304,30 @@ export default function HomePage() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 font-mono text-xs">
-          <div className="bg-sheet p-4 rounded-lg border border-rule space-y-1.5">
-            <span className="text-prussian font-bold">01 / INGESTION</span>
-            <h4 className="font-bold text-ink">Raw Chain Events</h4>
-            <p className="text-soft text-[11px]">
-              Extracts token transfers and <code className="text-ink">updateMultiplier</code> instructions via read-only RPC.
-            </p>
-          </div>
-
-          <div className="bg-sheet p-4 rounded-lg border border-rule space-y-1.5">
-            <span className="text-prussian font-bold">02 / ALGEBRA</span>
-            <h4 className="font-bold text-ink">Normalized Stream</h4>
-            <p className="text-soft text-[11px]">
-              Strict sorting by slot ascending, blockTime, and instruction index. Deduplication by signature.
-            </p>
-          </div>
-
-          <div className="bg-sheet p-4 rounded-lg border border-rule space-y-1.5">
-            <span className="text-prussian font-bold">03 / TIMELINE</span>
-            <h4 className="font-bold text-ink">Interval Slicing</h4>
-            <p className="text-soft text-[11px]">
-              Constructs continuous [start, end) multiplier intervals enforcing the <code className="text-ink">&gt;=</code> boundary rule.
-            </p>
-          </div>
-
-          <div className="bg-sheet p-4 rounded-lg border border-rule space-y-1.5">
-            <span className="text-prussian font-bold">04 / LEDGER</span>
-            <h4 className="font-bold text-ink">Raw Conservation</h4>
-            <p className="text-soft text-[11px]">
-              Computes cumulative net transfers at second T before floating-point conversion (Invariant I5).
-            </p>
-          </div>
-
-          <div className="bg-sheet p-4 rounded-lg border border-rule space-y-1.5">
-            <span className="text-prussian font-bold">05 / RESOLUTION</span>
-            <h4 className="font-bold text-ink">Active Multiplier</h4>
-            <p className="text-soft text-[11px]">
-              Resolves exact rational multiplier <code className="text-ink">num/den</code> at timestamp T without silent interpolation.
-            </p>
-          </div>
-
-          <div className="bg-sheet p-4 rounded-lg border border-rule space-y-1.5">
-            <span className="text-prussian font-bold">06 / STATEMENT</span>
-            <h4 className="font-bold text-ink">Ownership Record</h4>
-            <p className="text-soft text-[11px]">
-              Produces human-readable as-of record with terminology distinction (Shares vs Token Units).
-            </p>
-          </div>
-
-          <div className="bg-sheet p-4 rounded-lg border border-rule space-y-1.5">
-            <span className="text-prussian font-bold">07 / PROOF BUNDLE</span>
-            <h4 className="font-bold text-ink">Cryptographic Hashes</h4>
-            <p className="text-soft text-[11px]">
-              Packages statement, raw events, and source anchors into canonical SHA-256 digest.
-            </p>
-          </div>
-
-          <div className="bg-sheet p-4 rounded-lg border border-rule space-y-1.5">
-            <span className="text-prussian font-bold">08 / VERIFIER</span>
-            <h4 className="font-bold text-ink">Offline Verification</h4>
-            <p className="text-soft text-[11px]">
-              Independent CLI re-executes ledger and verifies bundle integrity in 15 milliseconds.
-            </p>
-          </div>
+          {[
+            { step: "01", name: "INGESTION", title: "Raw Chain Events", desc: "Extracts token transfers and updateMultiplier instructions via read-only RPC." },
+            { step: "02", name: "ALGEBRA", title: "Normalized Stream", desc: "Strict sorting by slot ascending, blockTime, and instruction index. Deduplication by signature." },
+            { step: "03", name: "TIMELINE", title: "Interval Slicing", desc: "Constructs continuous [start, end) multiplier intervals enforcing the >= boundary rule." },
+            { step: "04", name: "LEDGER", title: "Raw Conservation", desc: "Computes cumulative net transfers at second T before floating-point conversion (Invariant I5)." },
+            { step: "05", name: "RESOLUTION", title: "Active Multiplier", desc: "Resolves exact rational multiplier num/den at timestamp T without silent interpolation." },
+            { step: "06", name: "STATEMENT", title: "Ownership Record", desc: "Produces human-readable as-of record with legal domain separation (Shares vs Token Units)." },
+            { step: "07", name: "PROOF BUNDLE", title: "Cryptographic Hashes", desc: "Packages statement, raw events, and source anchors into canonical SHA-256 digest." },
+            { step: "08", name: "VERIFIER", title: "Offline Verification", desc: "Independent CLI re-executes ledger and verifies bundle integrity in 15 milliseconds." },
+          ].map((item) => (
+            <div
+              key={item.step}
+              className="relative group p-4 sm:p-5 rounded-xl border border-rule/80 bg-gradient-to-b from-paper to-sheet hover:border-prussian/70 hover:shadow-[0_0_25px_rgba(36,70,107,0.18)] hover:-translate-y-1 transition-all duration-300 space-y-2.5 overflow-hidden"
+            >
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-prussian/0 via-prussian to-prussian/0 opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="flex items-center justify-between">
+                <span className="text-[10px] font-bold text-prussian bg-prussian/10 border border-prussian/20 px-2 py-0.5 rounded group-hover:bg-prussian group-hover:text-paper transition-colors">
+                  {item.step} / {item.name}
+                </span>
+              </div>
+              <h4 className="font-bold text-ink text-sm font-serif">{item.title}</h4>
+              <p className="text-soft text-[11px] leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -390,7 +411,7 @@ export default function HomePage() {
       <section className="space-y-6 border-b border-rule pb-16">
         <div>
           <span className="text-xs font-mono uppercase tracking-wider text-breach font-semibold">
-            Security & Attack Resistance (§21)
+            Security & Attack Resistance
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl text-ink font-bold tracking-tight">
             Proof System & Break Lab
@@ -443,24 +464,126 @@ export default function HomePage() {
 
       {/* 7. SECTION: Supported Instruments Matrix */}
       <section className="space-y-6 border-b border-rule pb-16">
-        <div>
-          <span className="text-xs font-mono uppercase tracking-wider text-soft font-semibold">
-            Protocol Coverage
-          </span>
-          <h2 className="font-serif text-3xl sm:text-4xl text-ink font-bold tracking-tight">
-            Supported Instruments
-          </h2>
-          <p className="text-sm text-soft mt-1">
-            Tracking public tokenized equities (xStocks) and private company exposure (PreStocks).
-          </p>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <span className="text-xs font-mono uppercase tracking-wider text-soft font-semibold">
+              Protocol Coverage
+            </span>
+            <h2 className="font-serif text-3xl sm:text-4xl text-ink font-bold tracking-tight">
+              Supported Instruments
+            </h2>
+            <p className="text-sm text-soft mt-1">
+              Tracking public tokenized equities (xStocks) and private company exposure (PreStocks).
+            </p>
+          </div>
+          <Link
+            href="/board"
+            className="text-xs font-mono text-prussian hover:underline inline-flex items-center gap-1 font-bold"
+          >
+            <span>Explore Live Metrics</span>
+            <ChevronRight className="w-3.5 h-3.5" />
+          </Link>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 font-mono text-xs">
-          {["OPENAI", "SPACEX", "ANDURIL", "ANTHROPIC", "FIGUREAI", "KALSHI", "NEURALINK", "POLYMARKET", "SPYx", "AAPLx", "TSLAx", "NVDAx"].map((sym) => (
-            <div key={sym} className="bg-sheet p-3.5 rounded-lg border border-rule space-y-1 hover:border-prussian transition-all">
-              <div className="font-bold text-ink">{sym}</div>
-              <div className="text-[10px] text-soft">
-                {sym.endsWith("x") ? "Public Equity" : "Private Exposure"}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 font-mono text-xs">
+          {[
+            {
+              sym: "OPENAI",
+              type: "Private Exposure",
+              Logo: OpenAILogo,
+              iconBg: "bg-teal-500/10 text-teal-700 dark:text-teal-400 border border-teal-500/30",
+              cardGradient: "from-teal-500/[0.08] via-sheet to-paper border-teal-500/30 hover:border-teal-500 hover:shadow-[0_0_25px_rgba(20,184,166,0.22)]",
+            },
+            {
+              sym: "SPACEX",
+              type: "Private Exposure",
+              Logo: SpaceXLogo,
+              iconBg: "bg-sky-500/10 text-sky-700 dark:text-sky-400 border border-sky-500/30",
+              cardGradient: "from-sky-500/[0.08] via-sheet to-paper border-sky-500/30 hover:border-sky-500 hover:shadow-[0_0_25px_rgba(14,165,233,0.22)]",
+            },
+            {
+              sym: "ANDURIL",
+              type: "Private Exposure",
+              Logo: AndurilLogo,
+              iconBg: "bg-rose-500/10 text-rose-700 dark:text-rose-400 border border-rose-500/30",
+              cardGradient: "from-rose-500/[0.08] via-sheet to-paper border-rose-500/30 hover:border-rose-500 hover:shadow-[0_0_25px_rgba(244,63,94,0.22)]",
+            },
+            {
+              sym: "ANTHROPIC",
+              type: "Private Exposure",
+              Logo: AnthropicLogo,
+              iconBg: "bg-amber-600/10 text-amber-700 dark:text-amber-400 border border-amber-600/30",
+              cardGradient: "from-amber-600/[0.08] via-sheet to-paper border-amber-600/30 hover:border-amber-600 hover:shadow-[0_0_25px_rgba(217,119,6,0.22)]",
+            },
+            {
+              sym: "FIGUREAI",
+              type: "Private Exposure",
+              Logo: FigureAILogo,
+              iconBg: "bg-purple-500/10 text-purple-700 dark:text-purple-400 border border-purple-500/30",
+              cardGradient: "from-purple-500/[0.08] via-sheet to-paper border-purple-500/30 hover:border-purple-500 hover:shadow-[0_0_25px_rgba(168,85,247,0.22)]",
+            },
+            {
+              sym: "KALSHI",
+              type: "Private Exposure",
+              Logo: KalshiLogo,
+              iconBg: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30",
+              cardGradient: "from-emerald-500/[0.08] via-sheet to-paper border-emerald-500/30 hover:border-emerald-500 hover:shadow-[0_0_25px_rgba(16,185,129,0.22)]",
+            },
+            {
+              sym: "NEURALINK",
+              type: "Private Exposure",
+              Logo: NeuralinkLogo,
+              iconBg: "bg-fuchsia-500/10 text-fuchsia-700 dark:text-fuchsia-400 border border-fuchsia-500/30",
+              cardGradient: "from-fuchsia-500/[0.08] via-sheet to-paper border-fuchsia-500/30 hover:border-fuchsia-500 hover:shadow-[0_0_25px_rgba(217,70,239,0.22)]",
+            },
+            {
+              sym: "POLYMARKET",
+              type: "Private Exposure",
+              Logo: PolymarketLogo,
+              iconBg: "bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-500/30",
+              cardGradient: "from-blue-600/[0.08] via-sheet to-paper border-blue-500/30 hover:border-blue-500 hover:shadow-[0_0_25px_rgba(59,130,246,0.22)]",
+            },
+            {
+              sym: "SPYx",
+              type: "Public Equity",
+              Logo: SPYxLogo,
+              iconBg: "bg-green-600/10 text-green-700 dark:text-green-400 border border-green-600/30",
+              cardGradient: "from-green-600/[0.08] via-sheet to-paper border-green-600/30 hover:border-green-600 hover:shadow-[0_0_25px_rgba(22,163,74,0.22)]",
+            },
+            {
+              sym: "AAPLx",
+              type: "Public Equity",
+              Logo: AAPLxLogo,
+              iconBg: "bg-zinc-500/10 text-zinc-800 dark:text-zinc-200 border border-zinc-400/30",
+              cardGradient: "from-zinc-500/[0.08] via-sheet to-paper border-zinc-400/40 hover:border-zinc-500 hover:shadow-[0_0_25px_rgba(113,113,122,0.22)]",
+            },
+            {
+              sym: "TSLAx",
+              type: "Public Equity",
+              Logo: TSLAxLogo,
+              iconBg: "bg-red-500/10 text-red-700 dark:text-red-400 border border-red-500/30",
+              cardGradient: "from-red-600/[0.08] via-sheet to-paper border-red-500/30 hover:border-red-500 hover:shadow-[0_0_25px_rgba(239,68,68,0.22)]",
+            },
+            {
+              sym: "NVDAx",
+              type: "Public Equity",
+              Logo: NVDAxLogo,
+              iconBg: "bg-lime-500/10 text-lime-700 dark:text-lime-400 border border-lime-500/30",
+              cardGradient: "from-lime-600/[0.08] via-sheet to-paper border-lime-500/30 hover:border-lime-500 hover:shadow-[0_0_25px_rgba(132,204,22,0.22)]",
+            },
+          ].map((item) => (
+            <div
+              key={item.sym}
+              className={`relative group p-4 rounded-xl border bg-gradient-to-br shadow-sm hover:-translate-y-1 transition-all duration-300 space-y-2.5 overflow-hidden ${item.cardGradient}`}
+            >
+              <div className="flex items-center gap-3">
+                <div className={`p-2 rounded-xl shadow-xs shrink-0 group-hover:scale-110 transition-transform ${item.iconBg}`}>
+                  <item.Logo className="w-5 h-5" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="font-bold text-ink text-sm tracking-tight truncate">{item.sym}</div>
+                  <div className="text-[11px] text-soft font-mono truncate">{item.type}</div>
+                </div>
               </div>
             </div>
           ))}

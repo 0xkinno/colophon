@@ -320,7 +320,7 @@ export function AnchorProofSection({
         </div>
       </div>
 
-      {/* Failure State Notice (§10) */}
+      {/* Failure State Notice */}
       {anchorState === "ANCHOR_FAILED" && (
         <div className="bg-red-50 border border-red-200 text-breach p-3 rounded-lg mb-4 text-xs font-mono flex items-start gap-2">
           <AlertTriangle className="w-4 h-4 mt-0.5 shrink-0" />
@@ -341,7 +341,7 @@ export function AnchorProofSection({
         </div>
       )}
 
-      {/* Verified State View (§5) */}
+      {/* Verified State View */}
       {anchorState === "VERIFIED" && verifiedDetails && (
         <div className="bg-emerald-50 border border-emerald-200 text-emerald-950 p-4 rounded-lg mb-4 text-xs font-mono space-y-2">
           <div className="flex items-center gap-2 text-verified font-bold text-sm">

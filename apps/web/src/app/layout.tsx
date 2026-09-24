@@ -21,7 +21,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col font-sans selection:bg-prussian/10 selection:text-prussian">
         <SolanaWalletProvider>
           {/* Archival Ledger Top Header */}
-          <header className="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-rule px-6 py-3.5 flex items-center justify-between">
+          <header className="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-rule px-4 sm:px-6 py-3 sm:py-3.5 flex items-center justify-between">
             <div className="flex items-center gap-6">
               <Link href="/" className="flex items-center gap-2.5 group">
                 <span className="w-4 h-4 rounded-full bg-prussian group-hover:scale-110 transition-transform"></span>

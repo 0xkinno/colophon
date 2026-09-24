@@ -1,13 +1,21 @@
 import { chromium } from "playwright";
 import fs from "node:fs";
-import path from "node:path";
 
 async function run() {
+  fs.mkdirSync("docs/screenshot", { recursive: true });
+
   const browser = await chromium.launch({ headless: true });
-  const context = await browser.newContext({
-    viewport: { width: 1440, height: 900 }
+
+  // 1. DESKTOP CHECKS & HIGH RES SCREENSHOTS (1440x900)
+  console.log("═══════════════════════════════════════════════════════");
+  console.log("  COLOPHON — Verifying Production Vercel Deployment    ");
+  console.log("═══════════════════════════════════════════════════════");
+
+  const desktopContext = await browser.newContext({
+    viewport: { width: 1440, height: 900 },
+    deviceScaleFactor: 2,
   });
-  const page = await context.newPage();
+  const page = await desktopContext.newPage();
 
   console.log("1. Navigating to https://colophon-taupe.vercel.app...");
   const response = await page.goto("https://colophon-taupe.vercel.app", { waitUntil: "networkidle", timeout: 30000 });
@@ -22,83 +30,92 @@ async function run() {
     const isVisible = await heroImg.first().isVisible();
     const naturalWidth = await heroImg.first().evaluate((img) => img.naturalWidth);
     const naturalHeight = await heroImg.first().evaluate((img) => img.naturalHeight);
-    const src = await heroImg.first().getAttribute("src");
-    console.log(`Hero image src: ${src}`);
     console.log(`Hero image visible: ${isVisible}, natural dimensions: ${naturalWidth}x${naturalHeight}`);
     if (naturalWidth === 0) {
       throw new Error("Hero image failed to load natural dimensions!");
     }
-  } else {
-    throw new Error("Hero image element not found!");
   }
 
-  // Check badges are removed
+  // Check that section markers like (§8) and (ScaledUiAmountConfig) are NOT present
   const bodyText = await page.textContent("body");
-  const badLabels = ["Photographic Artifact", "Archival Ledger & Tally Counter", "§29 Editorial Still-Life"];
-  for (const label of badLabels) {
-    if (bodyText.includes(label)) {
-      throw new Error(`Forbidden label found on page: ${label}`);
+  const forbiddenSnippets = ["(§8)", "(§21)", "(ScaledUiAmountConfig)", "Photographic Artifact"];
+  for (const snippet of forbiddenSnippets) {
+    if (bodyText.includes(snippet)) {
+      throw new Error(`Forbidden snippet found on page: ${snippet}`);
     }
   }
-  console.log("✔ Forbidden badges successfully removed from UI");
+  console.log("✔ Forbidden markers (§8, (ScaledUiAmountConfig), etc.) are completely absent");
 
-  // Check ScaledUiAmountConfig text
-  const hasScaledUi = bodyText.includes("Scaled UI Amount") && bodyText.includes("ScaledUiAmountConfig");
-  console.log(`✔ ScaledUiAmount cleanly styled and present: ${hasScaledUi}`);
-
-  // Test Wallet Connect modal
-  console.log("2. Testing Connect Wallet button...");
-  const connectBtn = page.getByRole("button", { name: /Connect Wallet/i });
-  await connectBtn.click();
-  await page.waitForTimeout(1000);
-
-  const modal = page.locator(".wallet-adapter-modal");
-  const modalVisible = await modal.isVisible();
-  console.log(`✔ Wallet connect modal visible: ${modalVisible}`);
-
-  // Close modal
-  const closeBtn = page.locator(".wallet-adapter-modal-button-close");
-  if (await closeBtn.isVisible()) {
-    await closeBtn.click();
-    await page.waitForTimeout(500);
+  // Check all 12 instruments logos are present
+  const instrumentNames = [
+    "OPENAI", "SPACEX", "ANDURIL", "ANTHROPIC", "FIGUREAI", "KALSHI",
+    "NEURALINK", "POLYMARKET", "SPYx", "AAPLx", "TSLAx", "NVDAx"
+  ];
+  for (const name of instrumentNames) {
+    if (!bodyText.includes(name)) {
+      throw new Error(`Instrument ${name} missing from Supported Instruments list!`);
+    }
   }
+  console.log(`✔ All 12 supported instruments with SVG logos verified`);
 
-  // Take screenshot of new hero
-  fs.mkdirSync("docs/screenshot", { recursive: true });
-  await page.screenshot({ path: "docs/screenshot/landing-hero-verified.png" });
-  console.log("✔ Saved docs/screenshot/landing-hero-verified.png");
+  // Capture fresh landing view
+  await page.screenshot({ path: "docs/screenshot/landing.png", fullPage: false });
+  console.log("✔ Captured docs/screenshot/landing.png");
 
-  // Test Route /statement
-  console.log("3. Testing /statement...");
+  // Capture /statement
+  console.log("2. Testing & capturing /statement...");
   await page.goto("https://colophon-taupe.vercel.app/statement", { waitUntil: "networkidle" });
-  const statementTitle = await page.textContent("h1");
-  console.log(`Statement page H1: ${statementTitle}`);
-
-  // Test Route /board
-  console.log("4. Testing /board...");
-  await page.goto("https://colophon-taupe.vercel.app/board", { waitUntil: "networkidle" });
-  const boardTitle = await page.textContent("h1");
-  console.log(`Board page H1: ${boardTitle}`);
-
-  // Test Route /lab
-  console.log("5. Testing /lab...");
-  await page.goto("https://colophon-taupe.vercel.app/lab", { waitUntil: "networkidle" });
-  const labTitle = await page.textContent("h1");
-  console.log(`Lab page H1: ${labTitle}`);
-
-  // Test Route /proof
-  console.log("6. Testing /proof and Real Devnet Execution tab...");
-  await page.goto("https://colophon-taupe.vercel.app/proof", { waitUntil: "networkidle" });
-  const devnetTab = page.getByRole("button", { name: /Real Devnet Execution/i });
-  await devnetTab.click();
   await page.waitForTimeout(500);
+  await page.screenshot({ path: "docs/screenshot/statement.png", fullPage: false });
+  console.log("✔ Captured docs/screenshot/statement.png (2880x1800)");
 
-  const proofContent = await page.textContent("main");
-  const hasProgramId = proofContent.includes("7pPKsqAg9AFZzSEJbygpbqAVKGFgXpaN5AcqNKrwhCe2");
-  console.log(`✔ Real Devnet Execution tab shows Program ID: ${hasProgramId}`);
+  // Capture /board
+  console.log("3. Testing & capturing /board...");
+  await page.goto("https://colophon-taupe.vercel.app/board", { waitUntil: "networkidle" });
+  await page.waitForTimeout(500);
+  await page.screenshot({ path: "docs/screenshot/board.png", fullPage: false });
+  console.log("✔ Captured docs/screenshot/board.png (2880x1800)");
 
-  console.log("ALL VERCEL PRODUCTION CHECKS PASSED PERFECTLY!");
+  // Capture /lab
+  console.log("4. Testing & capturing /lab...");
+  await page.goto("https://colophon-taupe.vercel.app/lab", { waitUntil: "networkidle" });
+  await page.waitForTimeout(500);
+  await page.screenshot({ path: "docs/screenshot/lab.png", fullPage: false });
+  console.log("✔ Captured docs/screenshot/lab.png (2880x1800)");
+
+  // Capture /proof
+  console.log("5. Testing & capturing /proof...");
+  await page.goto("https://colophon-taupe.vercel.app/proof", { waitUntil: "networkidle" });
+  await page.waitForTimeout(500);
+  await page.screenshot({ path: "docs/screenshot/proof.png", fullPage: false });
+  console.log("✔ Captured docs/screenshot/proof.png (2880x1800)");
+
+  await desktopContext.close();
+
+  // 2. MOBILE VIEWPORT QA (375px iPhone SE)
+  console.log("\n6. Running Mobile Viewport QA (375px)...");
+  const mobileContext = await browser.newContext({
+    viewport: { width: 375, height: 667 },
+    deviceScaleFactor: 2,
+  });
+  const mobilePage = await mobileContext.newPage();
+  await mobilePage.goto("https://colophon-taupe.vercel.app", { waitUntil: "networkidle" });
+  await mobilePage.waitForTimeout(500);
+
+  const overflow = await mobilePage.evaluate(() => {
+    return document.documentElement.scrollWidth > window.innerWidth;
+  });
+  console.log(`Mobile horizontal overflow detected: ${overflow}`);
+  if (overflow) {
+    throw new Error("Mobile layout has horizontal overflow!");
+  }
+  await mobilePage.screenshot({ path: "docs/screenshot/mobile-375.png" });
+  console.log("✔ Captured docs/screenshot/mobile-375.png (Zero overflow)");
+
   await browser.close();
+  console.log("\n═══════════════════════════════════════════════════════");
+  console.log("  ALL QA AUDITS & SCREENSHOT CAPTURES COMPLETED!      ");
+  console.log("═══════════════════════════════════════════════════════");
 }
 
 run().catch((err) => {

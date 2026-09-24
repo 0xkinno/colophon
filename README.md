@@ -24,38 +24,31 @@ Colophon implements a deterministic temporal accounting kernel. It reconstructs 
 
 ## Product Links
 
-| Route | Name | Purpose | Production Status | First Load JS |
-|---|---|---|---|---|
-| [`/`](apps/web/src/app/page.tsx) | **Landing** | "The Two-Halves Line" hero, real measured contradiction callouts | Live | 101 kB |
-| [`/statement`](apps/web/src/app/statement/page.tsx) | **Statement** | As-of ownership reconstruction, proof receipt, and Devnet anchoring | Live | 191 kB |
-| [`/board`](apps/web/src/app/board/page.tsx) | **Discovery Board** | Real-time matrix of 12 tracked xStocks and PreStocks | Live | 98.9 kB |
-| [`/lab`](apps/web/src/app/lab/page.tsx) | **Boundary Lab** | Continuous date scrubber primitive across corporate split boundaries | Live | 89.1 kB |
-| [`/proof`](apps/web/src/app/proof/page.tsx) | **Proof & Tamper** | 3-arm benchmark, B1–B15 tamper bench, and Real Devnet Execution | Live | 98.3 kB |
+| Resource | Description |
+|---|---|
+| **Live App** | [https://colophon-taupe.vercel.app](https://colophon-taupe.vercel.app) |
+| **Video Demo** | [Demo Walkthrough](#) |
+| **GitHub Repository** | [https://github.com/0xkinno/colophon](https://github.com/0xkinno/colophon) |
+| **Devnet Program Explorer** | [Solana Explorer (`7pPKsqAg...`)](https://explorer.solana.com/address/7pPKsqAg9AFZzSEJbygpbqAVKGFgXpaN5AcqNKrwhCe2?cluster=devnet) |
+| **Anchor Verification Proof** | [Transaction Proof (`3ZF39Xyq...`)](https://explorer.solana.com/tx/3ZF39XyqTqVswAY8FVnpLZmW4Uq1VRepcWBFfmnmnFpr8BchUc8fUjJhLuCdzZreD1Ew4G9NAdijJFqT88Xie6Nz?cluster=devnet) |
 
 ---
 
 ## Product Screenshots
 
-### 1. Statement & Devnet Proof Anchoring (`/statement`)
-![Historical Statement Engine](docs/screenshot/statement.png)
-
-### 2. Multi-Token Discovery Board (`/board`)
-![Discovery Matrix](docs/screenshot/board.png)
-
-### 3. Continuous Boundary Lab (`/lab`)
-![Continuous Date Scrubber](docs/screenshot/lab.png)
-
-### 4. Proof Bench & Real Devnet Registry (`/proof`)
-![Proof and Tamper Lab](docs/screenshot/proof.png)
+| **1. Historical Statement Engine (`/statement`)** | **2. Multi-Token Discovery Board (`/board`)** |
+| :---: | :---: |
+| <img src="docs/screenshot/statement.png" width="100%" alt="Historical Statement Engine" /> | <img src="docs/screenshot/board.png" width="100%" alt="Multi-Token Discovery Board" /> |
+| **3. Continuous Boundary Lab (`/lab`)** | **4. Proof Bench & Devnet Registry (`/proof`)** |
+| <img src="docs/screenshot/lab.png" width="100%" alt="Continuous Boundary Lab" /> | <img src="docs/screenshot/proof.png" width="100%" alt="Proof Bench and Tamper Lab" /> |
 
 ---
 
-## The Problem
-
-### The User
+## The User
 Institutional custodians, prime brokers, tax accountants (CoinTracker, TaxBit), compliance auditors, and DeFi lending protocols trading tokenized public equities (xStocks) and private pre-IPO shares (PreStocks) on Solana.
 
-### The Fundamental Contradiction
+## The Problem
+
 A balance is not a timeline. Every standard wallet, indexer, and explorer reads SPL token balances as a single scalar. Under Token-2022's `ScaledUiAmountConfig`, display balance is a continuous function of time:
 
 $$\text{Display Balance}(t) = \text{Raw Balance} \times \text{Multiplier}(t)$$

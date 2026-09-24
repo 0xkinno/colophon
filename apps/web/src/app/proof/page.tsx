@@ -16,7 +16,7 @@ import {
 import { buildProofBundle } from "@colophon/proof";
 import { verifyProofBundleOffline } from "@colophon/verifier";
 
-// The 11 tested tamper attacks from §21
+// The 11 tested tamper attacks
 const TAMPER_ATTACKS = [
   {
     id: "B1",

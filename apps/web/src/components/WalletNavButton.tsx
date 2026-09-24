@@ -67,21 +67,23 @@ export function WalletNavButton() {
   };
 
   return (
-    <div className="flex items-center gap-2.5">
-      {/* Devnet Active Cluster Badge (§1) */}
-      <div className="flex items-center gap-1.5 text-xs font-mono font-medium text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded shadow-sm">
-        <span className="w-2 h-2 rounded-full bg-verified animate-pulse"></span>
-        <span className="font-semibold tracking-wide">SOLANA DEVNET</span>
+    <div className="flex items-center gap-2 sm:gap-2.5">
+      {/* Devnet Active Cluster Badge */}
+      <div className="flex items-center gap-1.5 text-xs font-mono font-medium text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 sm:px-2.5 py-1 rounded shadow-sm">
+        <span className="w-2 h-2 rounded-full bg-verified animate-pulse shrink-0"></span>
+        <span className="font-semibold tracking-wide text-[11px] sm:text-xs">
+          <span className="hidden xs:inline sm:inline">SOLANA </span>DEVNET
+        </span>
       </div>
 
       {!publicKey ? (
         <button
           onClick={() => setVisible(true)}
           disabled={connecting}
-          className="flex items-center gap-1.5 text-xs font-mono font-semibold bg-prussian text-paper px-3 py-1.5 rounded hover:bg-prussian/90 transition-all shadow-sm active:scale-95"
+          className="flex items-center gap-1.5 text-xs font-mono font-semibold bg-prussian text-paper px-2.5 sm:px-3 py-1.5 rounded hover:bg-prussian/90 transition-all shadow-sm active:scale-95 shrink-0"
         >
           <Wallet className="w-3.5 h-3.5" />
-          <span>{connecting ? "Connecting..." : "Connect Wallet"}</span>
+          <span className="text-[11px] sm:text-xs">{connecting ? "..." : "Connect"}</span>
         </button>
       ) : (
         <div className="relative">
