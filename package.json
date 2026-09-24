@@ -11,6 +11,7 @@
     "benchmark": "node scripts/benchmark-baseline.mjs"
   },
   "devDependencies": {
+    "@types/node": "^20.19.43",
     "playwright": "^1.63.0",
     "typescript": "^5.7.3"
   }

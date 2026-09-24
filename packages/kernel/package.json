@@ -16,5 +16,8 @@
     "build": "tsc -b",
     "typecheck": "tsc --noEmit",
     "test": "node --test dist/test/*.test.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43"
   }
 }

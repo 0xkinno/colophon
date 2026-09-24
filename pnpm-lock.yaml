@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      '@types/node':
+        specifier: ^20.19.43
+        version: 20.19.43
       playwright:
         specifier: ^1.63.0
         version: 1.63.0
@@ -106,7 +109,11 @@ importers:
         specifier: workspace:*
         version: link:../kernel
 
-  packages/kernel: {}
+  packages/kernel:
+    devDependencies:
+      '@types/node':
+        specifier: ^20.19.43
+        version: 20.19.43
 
   packages/proof:
     dependencies:
@@ -125,6 +132,10 @@ importers:
       '@colophon/proof':
         specifier: workspace:*
         version: link:../proof
+    devDependencies:
+      '@types/node':
+        specifier: ^20.19.43
+        version: 20.19.43
 
   packages/watch:
     dependencies:
