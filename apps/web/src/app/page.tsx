@@ -18,12 +18,26 @@ import {
 export default function HomePage() {
   return (
     <div className="space-y-16 py-4">
-      {/* 1. HERO SECTION with The Two-Halves Line & Generated Editorial Artwork */}
-      <section className="relative grid grid-cols-1 lg:grid-cols-12 gap-8 items-center border-b border-rule pb-16">
-        {/* Left Column: Typography & Proposition */}
-        <div className="lg:col-span-7 space-y-6 z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sheet border border-rule text-soft text-xs font-mono max-w-full">
-            <span className="w-2 h-2 rounded-full bg-breach animate-ping shrink-0"></span>
+      {/* 1. HERO SECTION with Background Editorial Artwork */}
+      <section className="relative rounded-2xl sm:rounded-3xl overflow-hidden border border-rule shadow-elevated bg-paper mb-8">
+        {/* Background Artwork Covering Top & Sitting at Back */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/colophon-hero.jpg"
+            alt="Colophon Archival Ledger"
+            fill
+            priority
+            className="object-cover object-right-top sm:object-center opacity-30 sm:opacity-35 scale-105"
+          />
+          {/* Subtle gradient wash to keep text ultra-crisp, elegant and institutional */}
+          <div className="absolute inset-0 bg-gradient-to-r from-paper via-paper/95 sm:via-paper/85 to-paper/40 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-paper via-transparent to-transparent opacity-80" />
+        </div>
+
+        {/* Content Sitting Cleanly on Top */}
+        <div className="relative z-10 p-6 sm:p-10 lg:p-14 max-w-4xl space-y-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-paper/90 backdrop-blur-sm border border-rule text-soft text-xs font-mono max-w-full shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-breach animate-ping shrink-0" />
             <span className="font-semibold text-ink shrink-0">EVIDENCE REPORT</span>
             <span className="hidden sm:inline">· Epoch 1041 On-Chain Divergence Measured</span>
           </div>
@@ -35,68 +49,45 @@ export default function HomePage() {
             </span>
           </h1>
 
-          <p className="text-base sm:text-lg text-soft leading-relaxed max-w-xl">
-            Solana Token-2022 <code className="bg-sheet px-1.5 py-0.5 rounded border border-rule font-mono text-sm text-ink">ScaledUiAmountConfig</code> multiplies
-            token balances to account for stock splits and corporate actions. When effective timestamps pass, the stored multiplier field remains stale.
+          <p className="text-base sm:text-lg text-soft leading-relaxed max-w-2xl font-normal">
+            Solana Token-2022 <span className="font-semibold text-ink">Scaled UI Amount</span> (<code className="bg-paper/90 px-1.5 py-0.5 rounded border border-rule font-mono text-xs font-semibold text-prussian">ScaledUiAmountConfig</code>) multiplies token balances to account for stock splits and corporate actions. When effective timestamps pass, the stored multiplier field remains stale.
           </p>
 
           {/* The Two-Halves Line Formula Display */}
-          <div className="p-4 rounded-xl bg-sheet border border-rule shadow-sm space-y-2">
-            <span className="text-[11px] font-mono uppercase tracking-wider text-soft font-semibold">
+          <div className="p-4 sm:p-5 rounded-xl bg-paper/90 backdrop-blur-md border border-rule shadow-sm space-y-2.5 max-w-2xl">
+            <span className="text-[11px] font-mono uppercase tracking-wider text-soft font-semibold block">
               The Two-Halves Line
             </span>
             <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 font-mono text-xs sm:text-sm">
-              <span className="bg-paper px-2.5 py-1 rounded border border-rule font-bold text-ink text-center sm:text-left">
+              <span className="bg-sheet px-3 py-1.5 rounded border border-rule font-bold text-ink text-center sm:text-left">
                 Raw Base Tokens
               </span>
               <span className="text-soft font-serif text-base text-center">×</span>
-              <span className="bg-paper px-2.5 py-1 rounded border border-verified/40 text-verified font-bold text-center sm:text-left">
+              <span className="bg-sheet px-3 py-1.5 rounded border border-verified/40 text-verified font-bold text-center sm:text-left">
                 Active Multiplier (at T)
               </span>
               <span className="text-soft font-serif text-base text-center">=</span>
-              <span className="bg-prussian text-paper px-3 py-1 rounded font-bold shadow-sm text-center sm:text-left">
+              <span className="bg-prussian text-paper px-3.5 py-1.5 rounded font-bold shadow-sm text-center sm:text-left">
                 True Reconstructed Shares
               </span>
             </div>
           </div>
 
+          {/* CTA Actions */}
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <Link
               href="/statement"
-              className="inline-flex items-center gap-2 bg-prussian text-paper px-6 py-3 rounded font-mono text-sm font-medium hover:bg-prussian/90 transition-all shadow-sheet"
+              className="inline-flex items-center gap-2 bg-prussian text-paper px-6 py-3 rounded-lg font-mono text-sm font-semibold hover:bg-prussian/90 transition-all shadow-sheet active:scale-95"
             >
               <span>Audit Wallet Statement</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               href="/lab"
-              className="inline-flex items-center gap-2 bg-sheet text-ink border border-rule px-5 py-3 rounded font-mono text-sm font-medium hover:bg-paper transition-all"
+              className="inline-flex items-center gap-2 bg-paper/90 backdrop-blur-sm text-ink border border-rule px-5 py-3 rounded-lg font-mono text-sm font-semibold hover:bg-paper transition-all shadow-sm active:scale-95"
             >
               <span>Scrubber Primitive</span>
             </Link>
-          </div>
-        </div>
-
-        {/* Right Column: Section 29 Editorial Hero Artwork */}
-        <div className="lg:col-span-5 relative">
-          <div className="relative rounded-2xl overflow-hidden border border-rule shadow-elevated bg-sheet aspect-[16/10]">
-            <Image
-              src="/colophon-hero.jpg"
-              alt="Colophon Archival Ledger Still-Life"
-              fill
-              priority
-              className="object-cover"
-            />
-            {/* Overlay badge */}
-            <div className="absolute bottom-3 left-3 right-3 p-3 bg-sheet/90 backdrop-blur-md rounded-lg border border-rule text-xs font-mono flex items-center justify-between">
-              <div>
-                <span className="text-soft block text-[10px] uppercase">Photographic Artifact</span>
-                <span className="font-bold text-ink">Archival Ledger & Tally Counter</span>
-              </div>
-              <span className="text-[11px] text-prussian bg-paper px-2 py-0.5 rounded border border-rule">
-                §29 Editorial Still-Life
-              </span>
-            </div>
           </div>
         </div>
       </section>
