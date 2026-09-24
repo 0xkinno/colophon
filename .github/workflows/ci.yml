@@ -41,11 +41,11 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Typecheck Workspace
-        run: pnpm run typecheck
-
       - name: Build All Workspace Packages & Web
         run: pnpm run build
+
+      - name: Typecheck Workspace
+        run: pnpm run typecheck
 
       - name: Run Mathematical Invariants & Adversarial Tamper Tests
         run: pnpm run test

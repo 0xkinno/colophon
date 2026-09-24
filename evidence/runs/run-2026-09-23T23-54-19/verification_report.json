@@ -5,7 +5,7 @@
       "kernelVersion": "0.1.0",
       "gitCommit": "HEAD",
       "rpcSource": "mainnet-beta",
-      "generatedAt": "2026-09-24T11:14:08.582Z",
+      "generatedAt": "2026-09-24T13:29:46.596Z",
       "wallet": "Holder1111111111111111111111111111111111111",
       "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
       "asOfTs": "1784306800",
@@ -49,7 +49,7 @@
         "priceSource": "prestocks-api",
         "priceConfidence": "OFFCHAIN"
       },
-      "generatedAt": "2026-09-24T11:14:08.580Z",
+      "generatedAt": "2026-09-24T13:29:46.593Z",
       "kernelVersion": "0.1.0",
       "confidence": "MEASURED",
       "statementHash": "4483f8bc35e7c28e8d4b515a917950b168b304ce0985fcd81d70c2298a38e2ae",
@@ -130,7 +130,7 @@
     },
     "offlineVerification": {
       "passed": true,
-      "checkedAt": "2026-09-24T11:14:08.589Z",
+      "checkedAt": "2026-09-24T13:29:46.611Z",
       "checks": {
         "statementHashMatches": true,
         "eventsHashMatches": true,
@@ -142,7 +142,7 @@
     "passed": true,
     "bundleId": "bundle-6dca0e55ddbfda53",
     "statementId": "stmt-619c6d4ab0700519",
-    "timestamp": "2026-09-24T11:14:08.591Z",
+    "timestamp": "2026-09-24T13:29:46.615Z",
     "checks": [
       {
         "checkId": "STMT_HASH",
