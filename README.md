@@ -82,11 +82,25 @@ Colophon implements a deterministic temporal accounting kernel:
 
 ## Explore in 2 Minutes
 
-1. **Visit `/statement`**: Select **OPENAI PreStock** and choose preset wallet `WV9PJN7...`.
-2. **Notice Date Selection**: Toggle between `2026-07-16` (pre-split) and `2026-07-18` (post-split).
-3. **Observe the Jump**: The raw balance remains constant ($1,901.81$ base tokens). The multiplier jumps from $1.0000000$ to $1.4861347$. The true reconstructed exposure jumps from $1,901.81$ to $2,826.35$ token units.
-4. **Notice Naive Error**: The baseline error shows $+924.54$ units ($+\$1,210,389.59$ misstatement).
-5. **Connect Devnet Wallet**: Click "Connect Wallet" in the header and click **"ANCHOR PROOF ON SOLANA"** to record the statement immutably on Devnet.
+Colophon makes real wallet interaction the primary product experience, discovering live token holdings directly while retaining a deterministic demo option for instant auditing:
+
+```
+CONNECT WALLET
+      ↓
+AUTOMATICALLY DISCOVER USER'S RELEVANT TOKENS
+      ↓
+SELECT ASSET
+      ↓
+SELECT DATE
+      ↓
+REAL STATEMENT
+```
+
+1. **Connect Wallet (Primary Path)**: Open [`/statement`](https://colophon-taupe.vercel.app/statement) and click **"Connect Wallet"** in the navigation header (supporting Phantom, Solflare, and Solana Wallet Standard). Colophon inspects your connected public key and automatically discovers your Token-2022 scaled-supply holdings.
+2. **Select Discovered Asset & Date $T$**: Select the desired asset (e.g. OpenAI PreStock, TSLAx) and toggle between audit timestamps (e.g. `2026-07-16` pre-split vs. `2026-07-18` post-split).
+3. **Inspect Real Statement**: The reconstructed statement calculates your exact holdings at second $T$. Observe how raw base tokens remain conserved while the active multiplier jumps ($1.0000000 \to 1.4861347$), eliminating the $+924.54$ unit baseline error ($+\$1,210,389.59$ misstatement).
+4. **Anchor on Devnet**: Click **"ANCHOR PROOF ON SOLANA"** to submit a real, 106-byte cryptographic commitment transaction to the Colophon Devnet program, generating an immutable on-chain audit receipt.
+5. **Use Deterministic Demo Account**: Don't have a funded wallet connected? Click **"Use deterministic demo account"** to immediately test the full audit workflow against canonical test addresses (`WV9PJN7...`) under real mainnet split conditions.
 
 ---
 
@@ -140,11 +154,14 @@ sequenceDiagram
     participant Kernel as @colophon/kernel
     participant Program as Colophon Program (Devnet)
     
-    User->>Web: Select Instrument (OPENAI) & Historical Date T
+    User->>Wallet: Connect Wallet (Phantom, Solflare, Standard)
+    Wallet-->>Web: Discovered Public Key & Accounts
+    Web->>Web: Automatically Discover Relevant Scaled-Supply Assets
+    User->>Web: Select Discovered Asset & Historical Date T
     Web->>Kernel: reconstructHoldingsAt(wallet, mint, asOfTs)
     Kernel->>Kernel: Resolve activeMultiplier at second T
     Kernel->>Kernel: Reconcile raw balance from transfers
-    Kernel-->>Web: True Units, Baseline Error & SHA-256 Digest
+    Kernel-->>Web: Real Statement: True Units, Baseline Error & SHA-256 Digest
     User->>Web: Click "Anchor Proof on Solana"
     Web->>Wallet: Request Transaction Signature
     Wallet-->>User: Approval Prompt
