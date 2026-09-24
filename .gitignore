@@ -12,3 +12,6 @@ programs/**/target/
 id.json
 
 .vercel
+
+out/
+apps/web/out/
