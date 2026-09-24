@@ -25,23 +25,26 @@ export function computeRawBalanceAt(
   let lastSignature = "GENESIS";
   let lastSlot = 0n;
 
+  const asOfBig = BigInt(asOfTs);
+
   // Filter transfers up to asOfTs (inclusive)
   const relevant = transfers.filter(
-    (t) => t.mint === mint && t.blockTime <= asOfTs
+    (t) => t.mint === mint && BigInt(t.blockTime) <= asOfBig
   );
 
   for (const t of relevant) {
+    const amount = BigInt(t.rawAmount);
     if (t.to === wallet) {
-      rawBalance += t.rawAmount;
+      rawBalance += amount;
       transferCount++;
       lastSignature = t.signature;
-      lastSlot = t.slot;
+      lastSlot = BigInt(t.slot);
     }
     if (t.from === wallet) {
-      rawBalance -= t.rawAmount;
+      rawBalance -= amount;
       transferCount++;
       lastSignature = t.signature;
-      lastSlot = t.slot;
+      lastSlot = BigInt(t.slot);
     }
   }
 

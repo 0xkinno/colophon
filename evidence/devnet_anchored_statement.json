@@ -1,0 +1,15 @@
+{
+  "cluster": "devnet",
+  "rpcEndpoint": "https://api.devnet.solana.com",
+  "programId": "7pPKsqAg9AFZzSEJbygpbqAVKGFgXpaN5AcqNKrwhCe2",
+  "statementPda": "s9nNX117qXUhwgdn5SNAhGAHwkZB4UpskBC3fyHe3uc",
+  "wallet": "C6cArZ2jgVq59ETyE6fQeLWvRvyXf85sxXH5UEKHAf3L",
+  "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
+  "statementHash": "4483f8bc35e7c28e8d4b515a917950b168b304ce0985fcd81d70c2298a38e2ae",
+  "evidenceRoot": "4e281c6fcd9486839cacdf12768e108a014db69856b89f882fb7103cc15c1023",
+  "effectiveTimestamp": 1784305800,
+  "slot": 503252060,
+  "schemaVersion": 1,
+  "verified": true,
+  "timestamp": "2026-09-24T02:35:21.212Z"
+}

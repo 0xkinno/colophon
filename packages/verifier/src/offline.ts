@@ -113,9 +113,9 @@ export function verifyProofBundleOffline(bundle: ProofBundle): OfflineVerificati
     transfers,
     bundle.statement.wallet,
     bundle.statement.mint,
-    bundle.statement.asOfTs
+    BigInt(bundle.statement.asOfTs)
   );
-  const balancePass = reconstructedRaw === bundle.statement.rawBalance;
+  const balancePass = reconstructedRaw === BigInt(bundle.statement.rawBalance);
   checks.push({
     checkId: "BALANCE_RECON",
     name: "Deterministic Balance Reconstruction",
@@ -129,7 +129,7 @@ export function verifyProofBundleOffline(bundle: ProofBundle): OfflineVerificati
   let orderingPass = true;
   let orderingError = "";
   for (let i = 1; i < bundle.sourceEvents.length; i++) {
-    if (bundle.sourceEvents[i].slot < bundle.sourceEvents[i - 1].slot) {
+    if (BigInt(bundle.sourceEvents[i].slot) < BigInt(bundle.sourceEvents[i - 1].slot)) {
       orderingPass = false;
       orderingError = `Slot non-monotonic at event index ${i}: ${bundle.sourceEvents[i].slot} < ${bundle.sourceEvents[i - 1].slot}`;
       break;

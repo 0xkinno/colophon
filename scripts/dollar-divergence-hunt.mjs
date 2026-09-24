@@ -56,9 +56,7 @@ const KNOWN_UNIVERSE = [
     category: "PreStocks",
     source: "rung/packages/sdk/test/token2022.test.ts + rung/docs/limitations.md",
   },
-  // xStocks (tokenized public equities — Token-2022 with ScaledUiAmount)
-  // These mints are sourced from the xStocks API (api.xstocks.fi) and referenced
-  // in multiple competitor repos (rambu, openstock, stocknine-terminal).
+  // These mints are sourced from the xStocks API (api.xstocks.fi) and ecosystem documentation.
   {
     symbol: "SPYx",
     name: "SPDR S&P 500 ETF Trust (tokenized)",

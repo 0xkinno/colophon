@@ -5,8 +5,7 @@
  * source anchors, normalized events, and cryptographically verified hashes.
  */
 
-import { createHash } from "node:crypto";
-import { Statement, ChainEvent, EvidenceLabel } from "@colophon/kernel";
+import { Statement, ChainEvent, EvidenceLabel, sha256Hex } from "@colophon/kernel";
 
 export type SourceAnchor = {
   signature: string;
@@ -63,7 +62,7 @@ export function computeEventsHash(events: readonly ChainEvent[]): string {
     null,
     0
   );
-  return createHash("sha256").update(canonical).digest("hex");
+  return sha256Hex(canonical);
 }
 
 export function computeBundleHash(
@@ -72,5 +71,5 @@ export function computeBundleHash(
   sourceEventsHash: string
 ): string {
   const payload = `${manifest.bundleId}:${manifest.wallet}:${manifest.mint}:${manifest.asOfTs}:${statementHash}:${sourceEventsHash}`;
-  return createHash("sha256").update(payload).digest("hex");
+  return sha256Hex(payload);
 }

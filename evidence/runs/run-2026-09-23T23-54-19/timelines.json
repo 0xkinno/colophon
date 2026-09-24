@@ -1,0 +1,172 @@
+{
+  "OPENAI": {
+    "symbol": "OPENAI",
+    "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
+    "intervals": [
+      {
+        "startTs": "1770000000",
+        "endTs": "1784305800",
+        "multiplierFloat": 1,
+        "sourceSignature": "sig_genesis_openai",
+        "confidence": "MEASURED"
+      },
+      {
+        "startTs": "1784305800",
+        "endTs": null,
+        "multiplierFloat": 1.4861347,
+        "sourceSignature": "sig_multiplier_update_openai",
+        "confidence": "MEASURED"
+      }
+    ]
+  },
+  "SPACEX": {
+    "symbol": "SPACEX",
+    "mint": "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh",
+    "intervals": [
+      {
+        "startTs": "1770000000",
+        "endTs": "1781065800",
+        "multiplierFloat": 1,
+        "sourceSignature": "sig_genesis_spacex",
+        "confidence": "MEASURED"
+      },
+      {
+        "startTs": "1781065800",
+        "endTs": null,
+        "multiplierFloat": 5,
+        "sourceSignature": "sig_multiplier_update_spacex",
+        "confidence": "MEASURED"
+      }
+    ]
+  },
+  "ANTHROPIC": {
+    "symbol": "ANTHROPIC",
+    "mint": "Pren1FvFX6J3E4kXU8N5bWwK4k1y7hC2vQx8Lp3mYtZ",
+    "intervals": [
+      {
+        "startTs": "1770000000",
+        "endTs": null,
+        "multiplierFloat": 1,
+        "sourceSignature": "sig_genesis",
+        "confidence": "MEASURED"
+      }
+    ]
+  },
+  "ANDURIL": {
+    "symbol": "ANDURIL",
+    "mint": "PresTj4Yc2bAR197vXqG3n5hL8mK2wP1zF9tC6vY4eD",
+    "intervals": [
+      {
+        "startTs": "1770000000",
+        "endTs": null,
+        "multiplierFloat": 1,
+        "sourceSignature": "sig_genesis",
+        "confidence": "MEASURED"
+      }
+    ]
+  },
+  "FIGUREAI": {
+    "symbol": "FIGUREAI",
+    "mint": "PreZad18qfPtbxNpW9mK2vL4xG7nC3hF1yT5eB8rQ2p",
+    "intervals": [
+      {
+        "startTs": "1770000000",
+        "endTs": null,
+        "multiplierFloat": 1,
+        "sourceSignature": "sig_genesis",
+        "confidence": "MEASURED"
+      }
+    ]
+  },
+  "KALSHI": {
+    "symbol": "KALSHI",
+    "mint": "PreLWGkkeqG1s4HEwX8nK3vF9tC2mP7yB1zQ5rT6eD4",
+    "intervals": [
+      {
+        "startTs": "1770000000",
+        "endTs": null,
+        "multiplierFloat": 1,
+        "sourceSignature": "sig_genesis",
+        "confidence": "MEASURED"
+      }
+    ]
+  },
+  "NEURALINK": {
+    "symbol": "NEURALINK",
+    "mint": "PrekqLJvJ3qVdXmBnF7tC2mP1yB5zQ8rT4eG9wL3xK6",
+    "intervals": [
+      {
+        "startTs": "1770000000",
+        "endTs": null,
+        "multiplierFloat": 1,
+        "sourceSignature": "sig_genesis",
+        "confidence": "MEASURED"
+      }
+    ]
+  },
+  "POLYMARKET": {
+    "symbol": "POLYMARKET",
+    "mint": "Pre8AREmFPtoJFT8vG3nK2mP9tC1yB7zQ4rT5eD6wL1",
+    "intervals": [
+      {
+        "startTs": "1770000000",
+        "endTs": null,
+        "multiplierFloat": 1,
+        "sourceSignature": "sig_genesis",
+        "confidence": "MEASURED"
+      }
+    ]
+  },
+  "SPYx": {
+    "symbol": "SPYx",
+    "mint": "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+    "intervals": [
+      {
+        "startTs": "1770000000",
+        "endTs": null,
+        "multiplierFloat": 1,
+        "sourceSignature": "sig_genesis",
+        "confidence": "MEASURED"
+      }
+    ]
+  },
+  "AAPLx": {
+    "symbol": "AAPLx",
+    "mint": "Gs4DVtiGSJ9LJvXaQFjYp6vhLNK2QsH4qWox2ck1kuMp",
+    "intervals": [
+      {
+        "startTs": "1770000000",
+        "endTs": null,
+        "multiplierFloat": 1,
+        "sourceSignature": "sig_genesis",
+        "confidence": "MEASURED"
+      }
+    ]
+  },
+  "TSLAx": {
+    "symbol": "TSLAx",
+    "mint": "GpoWLTd6GoisYxYgHz7mTcZvgnfJu4SN7T6PxWjgUTFY",
+    "intervals": [
+      {
+        "startTs": "1770000000",
+        "endTs": null,
+        "multiplierFloat": 1,
+        "sourceSignature": "sig_genesis",
+        "confidence": "MEASURED"
+      }
+    ]
+  },
+  "NVDAx": {
+    "symbol": "NVDAx",
+    "mint": "6TPsjFigUaMFanRCsxQ4WbmG215xhRBXsb5y5Cn5L6eE",
+    "intervals": [
+      {
+        "startTs": "1770000000",
+        "endTs": null,
+        "multiplierFloat": 1,
+        "sourceSignature": "sig_genesis",
+        "confidence": "MEASURED"
+      }
+    ]
+  }
+}

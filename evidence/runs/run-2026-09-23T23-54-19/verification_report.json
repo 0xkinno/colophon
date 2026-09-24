@@ -1,0 +1,154 @@
+{
+  "bundle": {
+    "manifest": {
+      "bundleId": "bundle-6dca0e55ddbfda53",
+      "kernelVersion": "0.1.0",
+      "gitCommit": "HEAD",
+      "rpcSource": "mainnet-beta",
+      "generatedAt": "2026-09-24T01:13:12.891Z",
+      "wallet": "Holder1111111111111111111111111111111111111",
+      "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
+      "asOfTs": "1784306800",
+      "asOfIso": "2026-07-17T16:46:40.000Z",
+      "claimStatement": "Wallet Holder1111111111111111111111111111111111111 held 2826.3544173717855 TOKEN UNITS of OPENAI on 2026-07-17T16:46:40.000Z (active multiplier: 1.4861347).",
+      "evidenceLabel": "MEASURED"
+    },
+    "statement": {
+      "statementId": "stmt-619c6d4ab0700519",
+      "wallet": "Holder1111111111111111111111111111111111111",
+      "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
+      "symbol": "OPENAI",
+      "instrumentCategory": "PreStocks",
+      "terminologyUnit": "TOKEN UNITS",
+      "asOfTs": "1784306800",
+      "asOfIso": "2026-07-17T16:46:40.000Z",
+      "rawBalance": "1901815775765",
+      "decimals": 9,
+      "activeMultiplier": {
+        "numerator": "14861347",
+        "denominator": "10000000",
+        "floatValue": 1.4861347,
+        "effectiveAt": "1784305800",
+        "effectiveIso": "2026-07-17T16:30:00.000Z",
+        "sourceSignature": "sig_update_openai",
+        "sourceSlot": "350000000",
+        "confidence": "MEASURED"
+      },
+      "reconstructedUnits": 2826.3544173717855,
+      "naiveBaseline": {
+        "staleMultiplier": 1,
+        "naiveUnits": 1901.815775765,
+        "unitsDelta": 924.5386416067856,
+        "relativeErrorPct": 48.61347000000001
+      },
+      "issuerActionsInScope": [],
+      "economicContext": {
+        "pricePerUnit": 1309.18,
+        "estimatedPositionValue": 3700206.6761347945,
+        "estimatedMisstatementDollars": 1210387.4988187717,
+        "priceSource": "prestocks-api",
+        "priceConfidence": "OFFCHAIN"
+      },
+      "generatedAt": "2026-09-24T01:13:12.889Z",
+      "kernelVersion": "0.1.0",
+      "confidence": "MEASURED",
+      "statementHash": "4483f8bc35e7c28e8d4b515a917950b168b304ce0985fcd81d70c2298a38e2ae"
+    },
+    "sourceEvents": [
+      {
+        "type": "TransferEvent",
+        "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
+        "from": "MintAuthority",
+        "to": "Holder1111111111111111111111111111111111111",
+        "rawAmount": "1901815775765",
+        "slot": "310000000",
+        "blockTime": "1775000000",
+        "signature": "sig_mint_transfer",
+        "confidence": "MEASURED"
+      }
+    ],
+    "sourceAnchors": [
+      {
+        "signature": "sig_update_openai",
+        "slot": "350000000",
+        "blockTime": "1784305800",
+        "instructionType": "ScaledUiAmountUpdate",
+        "sourceRole": "MULTIPLIER_SCHEDULE",
+        "description": "Active multiplier 1.4861347 effective at 2026-07-17T16:30:00.000Z"
+      },
+      {
+        "signature": "sig_mint_transfer",
+        "slot": "310000000",
+        "blockTime": "1775000000",
+        "instructionType": "TokenTransfer",
+        "sourceRole": "BALANCE_MOVEMENT",
+        "description": "Raw balance delta: +1901815775765"
+      }
+    ],
+    "hashes": {
+      "statementHash": "4483f8bc35e7c28e8d4b515a917950b168b304ce0985fcd81d70c2298a38e2ae",
+      "sourceEventsHash": "4e281c6fcd9486839cacdf12768e108a014db69856b89f882fb7103cc15c1023",
+      "bundleHash": "acf0932ef5f3a794f74f1b056619922882cbbc9cef1e36e7a911556bb80fadfc"
+    },
+    "offlineVerification": {
+      "passed": true,
+      "checkedAt": "2026-09-24T01:13:12.891Z",
+      "checks": {
+        "statementHashMatches": true,
+        "eventsHashMatches": true,
+        "invariantsPass": true
+      }
+    }
+  },
+  "report": {
+    "passed": true,
+    "bundleId": "bundle-6dca0e55ddbfda53",
+    "statementId": "stmt-619c6d4ab0700519",
+    "timestamp": "2026-09-24T01:13:12.892Z",
+    "checks": [
+      {
+        "checkId": "STMT_HASH",
+        "name": "Statement Hash Integrity",
+        "passed": true,
+        "message": "PASS: Statement hash matches deterministically computed hash"
+      },
+      {
+        "checkId": "EVENTS_HASH",
+        "name": "Source Events Hash Integrity",
+        "passed": true,
+        "message": "PASS: Source events hash matches canonical event digest"
+      },
+      {
+        "checkId": "BUNDLE_HASH",
+        "name": "Proof Bundle Hash Integrity",
+        "passed": true,
+        "message": "PASS: Bundle hash matches manifest, statement, and events root"
+      },
+      {
+        "checkId": "ANCHORS_TRACE",
+        "name": "Source Anchors Traceability (I2)",
+        "passed": true,
+        "message": "PASS: All 2 source anchors trace to signatures and slots"
+      },
+      {
+        "checkId": "BALANCE_RECON",
+        "name": "Deterministic Balance Reconstruction",
+        "passed": true,
+        "message": "PASS: Reconstructed raw balance (1901815775765) matches statement raw balance"
+      },
+      {
+        "checkId": "EVENT_ORDER",
+        "name": "Event Monotonicity & Ordering (I6)",
+        "passed": true,
+        "message": "PASS: All 1 events are strictly slot-monotonic"
+      },
+      {
+        "checkId": "LABEL_INTEGRITY",
+        "name": "Evidence Label Integrity (I10)",
+        "passed": true,
+        "message": "PASS: All 2 labels strictly adhere to 6-tag standard"
+      }
+    ],
+    "tamperDetected": false
+  }
+}

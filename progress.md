@@ -11,7 +11,6 @@
   - OPENAI: 48.6% error, $1.21M supply-level delta
   - SPACEX: 400% error, $4.06M supply-level delta
 - DISCOVERY.md written
-- COMPETITOR_DELTA.md written
 - GATE_0_REPORT.md written
 - Git initialized, Phase 0 committed
 

@@ -1,0 +1,48 @@
+[
+  {
+    "symbol": "OPENAI",
+    "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
+    "category": "PreStocks",
+    "staleMultiplier": 1,
+    "newMultiplier": 1.4861347,
+    "effectiveTimestamp": 1784305800,
+    "classification": "ACTIVE_DIVERGENT",
+    "details": "Effective since 2026-07-17T16:30:00.000Z (48.61% divergence)",
+    "scanTimestamp": 1790212129
+  },
+  {
+    "symbol": "SPACEX",
+    "mint": "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh",
+    "category": "PreStocks",
+    "staleMultiplier": 1,
+    "newMultiplier": 5,
+    "effectiveTimestamp": 1781065800,
+    "classification": "ACTIVE_DIVERGENT",
+    "details": "Effective since 2026-06-10T04:30:00.000Z (400.00% divergence)",
+    "scanTimestamp": 1790212129
+  },
+  {
+    "symbol": "ANTHROPIC",
+    "mint": "Pren1FvFX6J3E4kXU8N5bWwK4k1y7hC2vQx8Lp3mYtZ",
+    "classification": "STATIC",
+    "reason": "No ScaledUiAmountConfig extension present"
+  },
+  {
+    "symbol": "ANDURIL",
+    "mint": "PresTj4Yc2bAR197vXqG3n5hL8mK2wP1zF9tC6vY4eD",
+    "classification": "STATIC",
+    "reason": "No ScaledUiAmountConfig extension present"
+  },
+  {
+    "symbol": "FIGUREAI",
+    "mint": "PreZad18qfPtbxNpW9mK2vL4xG7nC3hF1yT5eB8rQ2p",
+    "classification": "STATIC",
+    "reason": "No ScaledUiAmountConfig extension present"
+  },
+  {
+    "symbol": "KALSHI",
+    "mint": "PreLWGkkeqG1s4HEwX8nK3vF9tC2mP7yB1zQ5rT6eD4",
+    "classification": "STATIC",
+    "reason": "No ScaledUiAmountConfig extension present"
+  }
+]

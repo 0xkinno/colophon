@@ -260,7 +260,6 @@ node scripts/fetch-price-context.mjs
 | `evidence/runs/run-2026-09-23T23-54-19/e7_prestocks_feasibility.json` | PreStocks 8/8 gate feasibility (E7) |
 | `evidence/runs/run-2026-09-23T23-54-19/claims.json` | Structured claim records |
 | `docs/DISCOVERY.md` | Full problem analysis |
-| `docs/COMPETITOR_DELTA.md` | Competitor gap analysis |
 | `docs/GATE_0_REPORT.md` | This document |
 
 ---

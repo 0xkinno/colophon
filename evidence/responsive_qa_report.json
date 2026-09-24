@@ -1,0 +1,66 @@
+{
+  "timestamp": "2026-09-24T03:44:10.030Z",
+  "results": [
+    {
+      "viewport": "Galaxy S9+",
+      "width": 360,
+      "height": 740,
+      "passed": true
+    },
+    {
+      "viewport": "iPhone SE",
+      "width": 375,
+      "height": 667,
+      "passed": true
+    },
+    {
+      "viewport": "iPhone 14 Pro",
+      "width": 393,
+      "height": 852,
+      "passed": true
+    },
+    {
+      "viewport": "Pixel 7",
+      "width": 412,
+      "height": 915,
+      "passed": true
+    },
+    {
+      "viewport": "iPad Mini",
+      "width": 768,
+      "height": 1024,
+      "passed": true
+    },
+    {
+      "viewport": "iPad Pro 11",
+      "width": 834,
+      "height": 1194,
+      "passed": true
+    },
+    {
+      "viewport": "HD Desktop",
+      "width": 1280,
+      "height": 720,
+      "passed": true
+    },
+    {
+      "viewport": "MacBook 14",
+      "width": 1440,
+      "height": 900,
+      "passed": true
+    },
+    {
+      "viewport": "FHD Desktop",
+      "width": 1920,
+      "height": 1080,
+      "passed": true
+    },
+    {
+      "viewport": "QHD Desktop",
+      "width": 2560,
+      "height": 1440,
+      "passed": true
+    }
+  ],
+  "allPassed": true
+}

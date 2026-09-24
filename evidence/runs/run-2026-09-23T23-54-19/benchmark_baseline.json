@@ -1,0 +1,126 @@
+{
+  "results": [
+    {
+      "asOfIso": "2026-06-07T16:30:00.000Z",
+      "trueActiveMult": 1,
+      "baselineMult": 1.4861347,
+      "colophonMult": 1,
+      "controlMult": 1,
+      "baselineError": true,
+      "colophonError": false,
+      "controlError": false
+    },
+    {
+      "asOfIso": "2026-06-27T16:30:00.000Z",
+      "trueActiveMult": 1,
+      "baselineMult": 1.4861347,
+      "colophonMult": 1,
+      "controlMult": 1.4861347,
+      "baselineError": true,
+      "colophonError": false,
+      "controlError": true
+    },
+    {
+      "asOfIso": "2026-07-07T16:30:00.000Z",
+      "trueActiveMult": 1,
+      "baselineMult": 1.4861347,
+      "colophonMult": 1,
+      "controlMult": 1.4861347,
+      "baselineError": true,
+      "colophonError": false,
+      "controlError": true
+    },
+    {
+      "asOfIso": "2026-07-15T16:30:00.000Z",
+      "trueActiveMult": 1,
+      "baselineMult": 1.4861347,
+      "colophonMult": 1,
+      "controlMult": 1.4861347,
+      "baselineError": true,
+      "colophonError": false,
+      "controlError": true
+    },
+    {
+      "asOfIso": "2026-07-17T16:29:59.000Z",
+      "trueActiveMult": 1,
+      "baselineMult": 1.4861347,
+      "colophonMult": 1,
+      "controlMult": 1.4861347,
+      "baselineError": true,
+      "colophonError": false,
+      "controlError": true
+    },
+    {
+      "asOfIso": "2026-07-17T16:30:00.000Z",
+      "trueActiveMult": 1.4861347,
+      "baselineMult": 1.4861347,
+      "colophonMult": 1.4861347,
+      "controlMult": 1.4861347,
+      "baselineError": false,
+      "colophonError": false,
+      "controlError": false
+    },
+    {
+      "asOfIso": "2026-07-17T16:30:01.000Z",
+      "trueActiveMult": 1.4861347,
+      "baselineMult": 1.4861347,
+      "colophonMult": 1.4861347,
+      "controlMult": 1.4861347,
+      "baselineError": false,
+      "colophonError": false,
+      "controlError": false
+    },
+    {
+      "asOfIso": "2026-07-22T16:30:00.000Z",
+      "trueActiveMult": 1.4861347,
+      "baselineMult": 1.4861347,
+      "colophonMult": 1.4861347,
+      "controlMult": 1.4861347,
+      "baselineError": false,
+      "colophonError": false,
+      "controlError": false
+    },
+    {
+      "asOfIso": "2026-08-11T16:30:00.000Z",
+      "trueActiveMult": 1.4861347,
+      "baselineMult": 1.4861347,
+      "colophonMult": 1.4861347,
+      "controlMult": 1.4861347,
+      "baselineError": false,
+      "colophonError": false,
+      "controlError": false
+    },
+    {
+      "asOfIso": "2026-09-15T16:30:00.000Z",
+      "trueActiveMult": 1.4861347,
+      "baselineMult": 1.4861347,
+      "colophonMult": 1.4861347,
+      "controlMult": 1.4861347,
+      "baselineError": false,
+      "colophonError": false,
+      "controlError": false
+    }
+  ],
+  "summary": {
+    "totalTestPoints": 10,
+    "arms": {
+      "baseline": {
+        "description": "Naive current multiplier applied backwards across historical queries",
+        "misstatementRate": "50.0%",
+        "errorsCount": 5
+      },
+      "colophon": {
+        "description": "Colophon timestamp-aware interval reconstruction",
+        "misstatementRate": "0.0%",
+        "errorsCount": 0
+      },
+      "negativeControl": {
+        "description": "Permuted effective timestamps control",
+        "misstatementRate": "40.0%",
+        "errorsCount": 4
+      }
+    },
+    "preRegisteredHypothesisConfirmed": true,
+    "claim": "PROVEN: Baseline misreports pre-effective historical holdings in 5 of 10 sample periods (50.0% error rate). Colophon achieves 0.0% misstatement rate."
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "reconciledAt": "2026-09-24T01:08:58.435Z",
+  "instruments": [
+    {
+      "symbol": "OPENAI",
+      "category": "PreStocks",
+      "observedMultiplierDelta": "+48.6135%",
+      "classification": "net multiplier / issuer-state change",
+      "corporateActionCorroboration": "WEAK_MIXED",
+      "note": "Private pre-IPO entity; multiplier adjustment reflects valuation/share pool recapitalization rather than dividend cash distribution."
+    },
+    {
+      "symbol": "SPACEX",
+      "category": "PreStocks",
+      "observedMultiplierDelta": "+400.0000% (5x)",
+      "classification": "net multiplier / issuer-state change",
+      "corporateActionCorroboration": "WEAK_MIXED",
+      "note": "5:1 forward multiplier expansion applied on-chain; private market recapitalization."
+    }
+  ]
+}

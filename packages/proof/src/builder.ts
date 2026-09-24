@@ -5,8 +5,7 @@
  * into a single transportable ProofBundle.
  */
 
-import { createHash } from "node:crypto";
-import { Statement, ChainEvent } from "@colophon/kernel";
+import { Statement, ChainEvent, sha256Hex } from "@colophon/kernel";
 import {
   ProofBundle,
   ProofManifest,
@@ -23,10 +22,9 @@ export function buildProofBundle(params: {
 }): ProofBundle {
   const { statement, events, gitCommit = "HEAD", rpcSource = "mainnet-beta" } = params;
 
-  const bundleId = `bundle-${createHash("sha256")
-    .update(`${statement.statementId}:${statement.asOfTs}`)
-    .digest("hex")
-    .slice(0, 16)}`;
+  const bundleId = `bundle-${sha256Hex(
+    `${statement.statementId}:${statement.asOfTs}`
+  ).slice(0, 16)}`;
 
   const claimStatement = `Wallet ${statement.wallet} held ${statement.reconstructedUnits} ${statement.terminologyUnit} of ${statement.symbol} on ${statement.asOfIso} (active multiplier: ${statement.activeMultiplier.floatValue}).`;
 

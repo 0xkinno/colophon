@@ -5,7 +5,7 @@
  * Enforces Invariant I8 (Proof determinism) and terminology rules from §16.
  */
 
-import { createHash } from "node:crypto";
+import { sha256Hex } from "./crypto.js";
 import { Statement, HistoricalHoldingsRecord, IssuerActionEvent, EvidenceLabel } from "./types.js";
 
 export function computeStatementHash(stmt: Omit<Statement, "statementHash">): string {
@@ -30,7 +30,7 @@ export function computeStatementHash(stmt: Omit<Statement, "statementHash">): st
     0
   );
 
-  return createHash("sha256").update(canonical).digest("hex");
+  return sha256Hex(canonical);
 }
 
 export function generateStatement(params: {
@@ -53,10 +53,9 @@ export function generateStatement(params: {
   } = params;
 
   const terminologyUnit = category === "PreStocks" ? "TOKEN UNITS" : "SHARES";
-  const statementId = `stmt-${createHash("sha256")
-    .update(`${holdings.wallet}:${holdings.mint}:${holdings.asOfTs}`)
-    .digest("hex")
-    .slice(0, 16)}`;
+  const statementId = `stmt-${sha256Hex(
+    `${holdings.wallet}:${holdings.mint}:${holdings.asOfTs}`
+  ).slice(0, 16)}`;
 
   const partialStatement: Omit<Statement, "statementHash"> = {
     statementId,

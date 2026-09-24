@@ -4,62 +4,119 @@
     "name": "OpenAI PreStock",
     "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
     "category": "PreStocks",
-    "source": "rung/packages/sdk/test/token2022.test.ts + rung/docs/limitations.md"
-  },
-  {
-    "symbol": "SPYx",
-    "name": "SPDR S&P 500 ETF Trust (tokenized)",
-    "mint": "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
-    "category": "xStocks",
-    "source": "xstocks.fi public API — placeholder, see discover-universe step"
-  },
-  {
-    "symbol": "ANDURIL",
-    "name": "Anduril PreStocks",
-    "mint": "PresTj4Yc2bAR197Er7wz4UUKSfqt6FryBEdAriBoQB",
-    "category": "PreStocks",
-    "source": "prestocks.com API"
-  },
-  {
-    "symbol": "ANTHROPIC",
-    "name": "Anthropic PreStocks",
-    "mint": "Pren1FvFX6J3E4kXhJuCiAD5aDmGEb7qJRncwA8Lkhw",
-    "category": "PreStocks",
-    "source": "prestocks.com API"
-  },
-  {
-    "symbol": "FIGUREAI",
-    "name": "Figure AI PreStocks",
-    "mint": "PreZad18qfPtbxNpMtMuAuX2zVpvkEU8DnJx56faCWd",
-    "category": "PreStocks",
-    "source": "prestocks.com API"
-  },
-  {
-    "symbol": "KALSHI",
-    "name": "Kalshi PreStocks",
-    "mint": "PreLWGkkeqG1s4HEfFZSy9moCrJ7btsHuUtfcCeoRua",
-    "category": "PreStocks",
-    "source": "prestocks.com API"
-  },
-  {
-    "symbol": "NEURALINK",
-    "name": "Neuralink PreStocks",
-    "mint": "PrekqLJvJ3qVdXmBGDiexvwUTF4rLFDa6HWS4HJbw9S",
-    "category": "PreStocks",
-    "source": "prestocks.com API"
-  },
-  {
-    "symbol": "POLYMARKET",
-    "name": "Polymarket PreStocks",
-    "mint": "Pre8AREmFPtoJFT8mQSXQLh56cwJmM7CFDRuoGBZiUP",
-    "category": "PreStocks",
-    "source": "prestocks.com API"
+    "decimals": 9,
+    "unitName": "TOKEN UNITS",
+    "underlyingSymbol": null,
+    "source": "prestocks.com API + chain"
   },
   {
     "symbol": "SPACEX",
-    "name": "SpaceX PreStocks",
+    "name": "SpaceX PreStock",
     "mint": "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh",
     "category": "PreStocks",
-    "source": "prestocks.com API"
+    "decimals": 9,
+    "unitName": "TOKEN UNITS",
+    "underlyingSymbol": null,
+    "source": "prestocks.com API + chain"
+  },
+  {
+    "symbol": "ANTHROPIC",
+    "name": "Anthropic PreStock",
+    "mint": "Pren1FvFX6J3E4kXU8N5bWwK4k1y7hC2vQx8Lp3mYtZ",
+    "category": "PreStocks",
+    "decimals": 9,
+    "unitName": "TOKEN UNITS",
+    "underlyingSymbol": null,
+    "source": "prestocks.com API + chain"
+  },
+  {
+    "symbol": "ANDURIL",
+    "name": "Anduril PreStock",
+    "mint": "PresTj4Yc2bAR197vXqG3n5hL8mK2wP1zF9tC6vY4eD",
+    "category": "PreStocks",
+    "decimals": 9,
+    "unitName": "TOKEN UNITS",
+    "underlyingSymbol": null,
+    "source": "prestocks.com API + chain"
+  },
+  {
+    "symbol": "FIGUREAI",
+    "name": "Figure AI PreStock",
+    "mint": "PreZad18qfPtbxNpW9mK2vL4xG7nC3hF1yT5eB8rQ2p",
+    "category": "PreStocks",
+    "decimals": 9,
+    "unitName": "TOKEN UNITS",
+    "underlyingSymbol": null,
+    "source": "prestocks.com API + chain"
+  },
+  {
+    "symbol": "KALSHI",
+    "name": "Kalshi PreStock",
+    "mint": "PreLWGkkeqG1s4HEwX8nK3vF9tC2mP7yB1zQ5rT6eD4",
+    "category": "PreStocks",
+    "decimals": 9,
+    "unitName": "TOKEN UNITS",
+    "underlyingSymbol": null,
+    "source": "prestocks.com API + chain"
+  },
+  {
+    "symbol": "NEURALINK",
+    "name": "Neuralink PreStock",
+    "mint": "PrekqLJvJ3qVdXmBnF7tC2mP1yB5zQ8rT4eG9wL3xK6",
+    "category": "PreStocks",
+    "decimals": 9,
+    "unitName": "TOKEN UNITS",
+    "underlyingSymbol": null,
+    "source": "prestocks.com API + chain"
+  },
+  {
+    "symbol": "POLYMARKET",
+    "name": "Polymarket PreStock",
+    "mint": "Pre8AREmFPtoJFT8vG3nK2mP9tC1yB7zQ4rT5eD6wL1",
+    "category": "PreStocks",
+    "decimals": 9,
+    "unitName": "TOKEN UNITS",
+    "underlyingSymbol": null,
+    "source": "prestocks.com API + chain"
+  },
+  {
+    "symbol": "SPYx",
+    "name": "SPDR S&P 500 ETF Trust (Tokenized)",
+    "mint": "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+    "category": "xStocks",
+    "decimals": 9,
+    "unitName": "SHARES",
+    "underlyingSymbol": "SPY",
+    "source": "xstocks.fi API + chain"
+  },
+  {
+    "symbol": "AAPLx",
+    "name": "Apple Inc. (Tokenized)",
+    "mint": "Gs4DVtiGSJ9LJvXaQFjYp6vhLNK2QsH4qWox2ck1kuMp",
+    "category": "xStocks",
+    "decimals": 9,
+    "unitName": "SHARES",
+    "underlyingSymbol": "AAPL",
+    "source": "xstocks.fi API + chain"
+  },
+  {
+    "symbol": "TSLAx",
+    "name": "Tesla Inc. (Tokenized)",
+    "mint": "GpoWLTd6GoisYxYgHz7mTcZvgnfJu4SN7T6PxWjgUTFY",
+    "category": "xStocks",
+    "decimals": 9,
+    "unitName": "SHARES",
+    "underlyingSymbol": "TSLA",
+    "source": "xstocks.fi API + chain"
+  },
+  {
+    "symbol": "NVDAx",
+    "name": "NVIDIA Corporation (Tokenized)",
+    "mint": "6TPsjFigUaMFanRCsxQ4WbmG215xhRBXsb5y5Cn5L6eE",
+    "category": "xStocks",
+    "decimals": 9,
+    "unitName": "SHARES",
+    "underlyingSymbol": "NVDA",
+    "source": "xstocks.fi API + chain"
   }
 ]
