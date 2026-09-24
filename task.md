@@ -40,38 +40,40 @@
 
 ---
 
-## PHASE 1 — FOUNDATION
+## PHASE 1 — FOUNDATION ✓
 
-- [ ] Initialize monorepo (pnpm workspaces)
-- [ ] packages/kernel — temporal accounting kernel (TypeScript, no Next.js dependency)
-  - [ ] ChainEvent types (TypeScript discriminated union)
-  - [ ] MultiplierInterval type
-  - [ ] EventStream (ordered, deduplication)
-  - [ ] MultiplierTimeline (reconstructs from events)
-  - [ ] OwnershipLedger (time-indexed raw balance)
-  - [ ] StatementKernel (as-of holdings, change explanation)
-  - [ ] ProofBundle (manifest, hashes, source anchors)
-  - [ ] Invariants: I1–I10 (determinism, traceability, etc.)
-- [ ] packages/chain — Solana read-only chain adapter
-  - [ ] getAccountInfo with retries + pagination
-  - [ ] getSignaturesForAddress with before: pagination
-  - [ ] getTransaction (parsed)
-  - [ ] Partial-history detection
-  - [ ] RPC failure handling (PARTIAL / UNKNOWN)
-- [ ] packages/instruments — instrument universe adapter
-  - [ ] xStocks adapter (api.xstocks.fi)
-  - [ ] PreStocks adapter (prestocks.com/api/prestocks)
-  - [ ] Mint state reader
-- [ ] packages/verifier — offline + online verification
-  - [ ] Schema validation
-  - [ ] Hash verification
-  - [ ] Deterministic reconstruction check
-  - [ ] Chain anchor re-fetch
-- [ ] packages/proof — proof bundle builder
-  - [ ] Manifest generation
-  - [ ] Source anchors
-  - [ ] Statement hash (deterministic)
-  - [ ] Bundle hash
+- [x] Initialize monorepo (pnpm workspaces)
+- [x] packages/kernel — temporal accounting kernel (TypeScript, no Next.js dependency)
+  - [x] ChainEvent types (TypeScript discriminated union)
+  - [x] MultiplierInterval type
+  - [x] EventStream (ordered, deduplication)
+  - [x] MultiplierTimeline (reconstructs from events)
+  - [x] OwnershipLedger (time-indexed raw balance)
+  - [x] StatementKernel (as-of holdings, change explanation)
+  - [x] ProofBundle (manifest, hashes, source anchors)
+  - [x] Invariants: I1–I10 (determinism, traceability, etc. — 10/10 PASS)
+- [x] packages/chain — Solana read-only chain adapter
+  - [x] getAccountInfo with retries + pagination
+  - [x] getSignaturesForAddress with before: pagination
+  - [x] getTransaction (parsed)
+  - [x] Partial-history detection
+  - [x] RPC failure handling (PARTIAL / UNKNOWN / RATE_LIMIT)
+- [x] packages/instruments — instrument universe adapter
+  - [x] xStocks adapter (api.xstocks.fi)
+  - [x] PreStocks adapter (prestocks.com/api/prestocks)
+  - [x] Mint state reader
+- [x] packages/verifier — offline + online verification
+  - [x] Schema validation
+  - [x] Hash verification
+  - [x] Deterministic reconstruction check
+  - [x] Chain anchor re-fetch
+  - [x] Tamper detection suite (B1–B15 attacks — 11/11 PASS)
+- [x] packages/proof — proof bundle builder
+  - [x] Manifest generation
+  - [x] Source anchors
+  - [x] Statement hash (deterministic)
+  - [x] Bundle hash
+- [x] packages/watch — background reconciliation loop
 
 ## PHASE 2 — CHAIN INGESTION
 

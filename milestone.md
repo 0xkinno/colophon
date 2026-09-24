@@ -12,16 +12,22 @@ Key deliverables:
 - [x] GATE_0_REPORT.md written
 - [x] All reference repos analyzed
 
-## Milestone 1 — Kernel
-**Target**: Working temporal accounting kernel with invariant tests.
-**Status**: NOT STARTED
+## Milestone 1 — Foundation Kernel & Verification ✓
+**Target**: Working temporal accounting kernel with invariant tests and verifier.
+**Status**: COMPLETE
+**Date**: 2026-09-24
 
 Key deliverables:
-- packages/kernel with typed event algebra
-- MultiplierTimeline reconstruction
-- OwnershipLedger at-timestamp query
-- Invariants I1–I10 tested
-- Boundary lab (15 edge cases)
+- [x] packages/kernel with typed event algebra
+- [x] MultiplierTimeline reconstruction & boundary resolution
+- [x] OwnershipLedger at-timestamp query
+- [x] Invariants I1–I10 tested (10/10 PASS)
+- [x] Boundary lab (15/15 PASS in E2)
+- [x] packages/chain read-only adapter
+- [x] packages/instruments adapters (xStocks & PreStocks)
+- [x] packages/proof bundle builder
+- [x] packages/verifier with B1–B15 tamper campaign (11/11 PASS)
+- [x] packages/watch reconciliation loop
 
 ## Milestone 2 — Chain + Scripts
 **Target**: Real on-chain data flowing through the kernel.
