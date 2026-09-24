@@ -1,0 +1,83 @@
+{
+  "experiment": "E3",
+  "name": "Dividend/Issuer-Event Reconciliation",
+  "timestamp": "2026-09-24T00:25:02.140Z",
+  "question": "Do observed multiplier changes correlate with issuer distribution/dividend events?",
+  "hypothesis": "For private-company PreStocks, multiplier changes reflect valuation adjustments or token splits, not traditional dividends.",
+  "method": "Compute implied_change = (newMultiplier/oldMultiplier) - 1. Compare with xStocks CA feed and PreStocks API data. Follow §14 guidance: if weak/mixed, label as 'net multiplier/issuer-state change'.",
+  "input": {
+    "mints": [
+      "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
+      "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh"
+    ],
+    "apiStatus": {
+      "xstocks": "OK",
+      "prestocks": "OK"
+    }
+  },
+  "results": {
+    "xstocksCAs": 100,
+    "prestocksCAs": [
+      {
+        "name": "OpenAI PreStocks",
+        "symbol": "OPENAI",
+        "description": "OpenAI pioneers large-language models like GPT and DALL·E, enabling advanced AI applications. Their research emphasizes both cutting-edge capability and responsible deployment strategies.\n\nOPENAI is a PreStocks issued token backed 1:1 by SPV exposure that tracks the price of the underlying private company.",
+        "image": "https://www.prestocks.com/logos/openai.png",
+        "external_url": "https://www.prestocks.com/openai",
+        "contract_address": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
+        "markPrice": 1024.719911647309,
+        "markValuation": 1269556545347,
+        "tokenPrice": 1369.5430607094843,
+        "impliedValuation": 1696768392120,
+        "supply": 2826.3544173717855
+      },
+      {
+        "name": "SpaceX PreStocks",
+        "symbol": "SPACEX",
+        "description": "SpaceX engineers reusable launch vehicles and the Starlink satellite constellation for global broadband. Their focus on rapid reusability and vertical integration drives down launch costs and accelerates space access.\n\nSPACEX is a PreStocks issued token backed 1:1 by SPV exposure that tracks the price of the underlying private company.",
+        "image": "https://www.prestocks.com/logos/spacex.png",
+        "external_url": "https://www.prestocks.com/spacex",
+        "contract_address": "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh",
+        "markPrice": 149.062404031814,
+        "markValuation": 1954373741750,
+        "tokenPrice": 115.19920509867238,
+        "impliedValuation": 1510389577960,
+        "supply": 43712.532100135
+      }
+    ],
+    "reconciliation": [
+      {
+        "symbol": "OPENAI",
+        "staleMultiplier": 1,
+        "correctMultiplier": 1.4861347,
+        "impliedChange": 0.48613470000000003,
+        "impliedChangePct": "48.6135%",
+        "interpretation": "~48.6% increase — consistent with a valuation round or token supply adjustment. OpenAI raised $6.6B in Oct 2024; multiplier may reflect post-money valuation adjustment.",
+        "matchStrength": "WEAK_MIXED",
+        "label": "net multiplier / issuer-state change"
+      },
+      {
+        "symbol": "SPACEX",
+        "staleMultiplier": 1,
+        "correctMultiplier": 5,
+        "impliedChange": 4,
+        "impliedChangePct": "400.0000%",
+        "interpretation": "5× increase — consistent with a token split (1:5 forward split) applied via ScaledUiAmount multiplier.",
+        "matchStrength": "WEAK_MIXED",
+        "label": "net multiplier / issuer-state change"
+      }
+    ],
+    "apiStatus": {
+      "xstocks": "OK",
+      "prestocks": "OK"
+    }
+  },
+  "claim": "WEAK_MIXED: Multiplier changes cannot be directly attributed to dividends from available public data. They are classified as 'net multiplier / issuer-state change' per §14. The structural divergence (stale vs. correct multiplier) is unaffected by this classification.",
+  "limitations": [
+    "PreStocks does not publish a formal corporate actions feed.",
+    "xStocks CA API covers public equities — not applicable to private-company PreStocks.",
+    "Cannot confirm causal mechanism (valuation round vs. split vs. other) from on-chain data alone.",
+    "Per §14: 'Do NOT force the interpretation.' Result is WEAK_MIXED — reported honestly."
+  ],
+  "reproduction": "node scripts/e3-e4-e5-chain.mjs"
+}

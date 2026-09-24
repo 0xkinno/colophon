@@ -1,0 +1,201 @@
+{
+  "experiment": "E2",
+  "name": "Semantic Boundary Lab",
+  "timestamp": "2026-09-24T00:24:58.409Z",
+  "question": "Does the multiplier resolution logic correctly handle all 15 temporal boundary cases from §11?",
+  "hypothesis": "The time-check `nowTs >= effectiveTimestamp ? newMultiplier : multiplier` handles all 15 cases correctly, including edge cases for rounding, overflow, missing history, and duplicate events.",
+  "method": "Deterministic in-process tests against 15 constructed scenarios. No chain calls.",
+  "input": "SYNTHETIC — labeled as SYNTHETIC in every result.",
+  "results": [
+    {
+      "id": "C1",
+      "name": "Before effective timestamp",
+      "description": "One second before effectiveTs — old multiplier must apply",
+      "status": "PASS",
+      "result": {
+        "got": 1,
+        "pass": true
+      },
+      "evidenceLabel": "SYNTHETIC"
+    },
+    {
+      "id": "C2",
+      "name": "Exactly at effective timestamp",
+      "description": "At exactly effectiveTs — new multiplier must apply (>=, not >)",
+      "status": "PASS",
+      "result": {
+        "got": 1.4861347,
+        "pass": true
+      },
+      "evidenceLabel": "SYNTHETIC"
+    },
+    {
+      "id": "C3",
+      "name": "One second after effective timestamp",
+      "description": "One second after effectiveTs — new multiplier applies",
+      "status": "PASS",
+      "result": {
+        "got": 1.4861347,
+        "pass": true
+      },
+      "evidenceLabel": "SYNTHETIC"
+    },
+    {
+      "id": "C4",
+      "name": "Schedule A then B before A activates",
+      "description": "Query before A's effectiveAt — neither A nor B has activated",
+      "status": "PASS",
+      "result": {
+        "got": 1,
+        "pass": true
+      },
+      "evidenceLabel": "SYNTHETIC"
+    },
+    {
+      "id": "C5",
+      "name": "Schedule B after A activates",
+      "description": "Query between A and B — A applies, B doesn't yet",
+      "status": "PASS",
+      "result": {
+        "got": 1.2,
+        "pass": true
+      },
+      "evidenceLabel": "SYNTHETIC"
+    },
+    {
+      "id": "C6",
+      "name": "Large raw amounts",
+      "description": "Large raw amounts must not overflow or lose precision catastrophically",
+      "status": "PASS",
+      "result": {
+        "got": 14861347000,
+        "relErr": 0,
+        "pass": true
+      },
+      "evidenceLabel": "SYNTHETIC"
+    },
+    {
+      "id": "C7",
+      "name": "Fractional/difficult multiplier representation",
+      "description": "Multiplier with 7 decimal places must be preserved exactly",
+      "status": "PASS",
+      "result": {
+        "got": 1.4861347,
+        "pass": true
+      },
+      "evidenceLabel": "SYNTHETIC"
+    },
+    {
+      "id": "C8",
+      "name": "Rounding at UI conversion boundary",
+      "description": "Smallest possible raw amount × multiplier — float precision boundary",
+      "status": "PASS",
+      "result": {
+        "got": 1.4861347000000002e-9,
+        "pass": true,
+        "relErr": 1.3914967003883088e-16
+      },
+      "evidenceLabel": "SYNTHETIC"
+    },
+    {
+      "id": "C9",
+      "name": "Overflow boundaries",
+      "description": "raw = 2^53 (Number.MAX_SAFE_INTEGER) — must not silently lose precision",
+      "status": "PASS",
+      "result": {
+        "got": 9007199254740992,
+        "isExact": true,
+        "pass": true,
+        "note": "Exact conversion"
+      },
+      "evidenceLabel": "SYNTHETIC"
+    },
+    {
+      "id": "C10",
+      "name": "Missing transaction history",
+      "description": "Empty timeline — must return UNKNOWN, not fabricate a value",
+      "status": "PASS",
+      "result": {
+        "got": {
+          "value": null,
+          "confidence": "UNKNOWN"
+        },
+        "pass": true
+      },
+      "evidenceLabel": "SYNTHETIC"
+    },
+    {
+      "id": "C11",
+      "name": "Deleted/corrupted evidence",
+      "description": "Evidence with null source fields must be labeled UNKNOWN, not MEASURED",
+      "status": "PASS",
+      "result": {
+        "got": {
+          "value": 1.4861347,
+          "confidence": "UNKNOWN"
+        },
+        "pass": true,
+        "note": "Corrupted evidence must not claim MEASURED confidence"
+      },
+      "evidenceLabel": "SYNTHETIC"
+    },
+    {
+      "id": "C12",
+      "name": "Unknown instruction type",
+      "description": "Unknown instruction must be classified UnknownEvent, not silently dropped or misclassified",
+      "status": "PASS",
+      "result": {
+        "got": "UnknownEvent",
+        "pass": true
+      },
+      "evidenceLabel": "SYNTHETIC"
+    },
+    {
+      "id": "C13",
+      "name": "Reordered timestamps",
+      "description": "buildTimeline must sort by slot — reordered input must produce same result as ordered input",
+      "status": "PASS",
+      "result": {
+        "got": 1.2,
+        "pass": true
+      },
+      "evidenceLabel": "SYNTHETIC"
+    },
+    {
+      "id": "C14",
+      "name": "Duplicate events",
+      "description": "Duplicate events (same signature) must be deduplicated — timeline length must be 1",
+      "status": "PASS",
+      "result": {
+        "timelineLength": 1,
+        "pass": true
+      },
+      "evidenceLabel": "SYNTHETIC"
+    },
+    {
+      "id": "C15",
+      "name": "Duplicate transaction replay",
+      "description": "Same multiplier value appearing from two sigs must not double-apply. Timeline deduplicates by signature; same-effectiveAt same-value events are idempotent.",
+      "status": "PASS",
+      "result": {
+        "got": 1.4861347,
+        "timelineLength": 2,
+        "pass": true,
+        "note": "Idempotent: same result regardless of replay count"
+      },
+      "evidenceLabel": "SYNTHETIC"
+    }
+  ],
+  "summary": {
+    "total": 15,
+    "passed": 15,
+    "failed": 0
+  },
+  "claim": "PROVEN: All 15 semantic boundary cases handled correctly.",
+  "limitations": [
+    "All test inputs are synthetic — labeled SYNTHETIC.",
+    "The kernel package will add type-safe implementations of these functions.",
+    "Overflow at amounts > Number.MAX_SAFE_INTEGER requires BigInt arithmetic throughout."
+  ],
+  "reproduction": "node scripts/e2-semantic-lab.mjs"
+}

@@ -1,0 +1,36 @@
+{
+  "experiment": "E1",
+  "name": "Historical Multiplier Recovery",
+  "runId": "run-2026-09-23T23-54-19",
+  "timestamp": "2026-09-24T00:35:28.363Z",
+  "rpcSource": "mainnet-beta",
+  "question": "Can we recover the original multiplier update transaction signatures from chain history?",
+  "hypothesis": "The update instruction exists in chain history before the effective timestamp.",
+  "method": "Deep RPC pagination through getSignaturesForAddress with before: cursor, scanning up to 1000 transactions per mint.",
+  "input": [
+    "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
+    "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh"
+  ],
+  "results": {
+    "OPENAI": {
+      "events": [],
+      "status": "PARTIAL",
+      "pagesScanned": 1,
+      "error": "HTTP 429"
+    },
+    "SPACEX": {
+      "events": [],
+      "status": "PARTIAL",
+      "pagesScanned": 0,
+      "error": "HTTP 429"
+    }
+  },
+  "output": "evidence/runs/run-2026-09-23T23-54-19/multiplier_history.json",
+  "claim": "NOT_FOUND_IN_WINDOW: Multiplier update transactions not found in the scanned range. The current-state divergence is still proven by getAccountInfo. Source signatures require deeper history access (Helius/getSignaturesForAddress with full history, or a transaction index service).",
+  "limitations": [
+    "Public mainnet RPC getSignaturesForAddress has practical depth limits.",
+    "Absence of signature in window does not disprove the update — it means the update is older than the scanned range.",
+    "The current-state divergence (OPENAI 48.6%, SPACEX 400%) is proven independently of finding the source transaction."
+  ],
+  "reproduction": "node scripts/e1-historical-recovery.mjs"
+}

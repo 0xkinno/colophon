@@ -249,8 +249,15 @@ node scripts/fetch-price-context.mjs
 | `evidence/runs/run-2026-09-23T23-54-19/run_manifest.json` | Scan metadata, toolchain, RPC source |
 | `evidence/runs/run-2026-09-23T23-54-19/universe.json` | Instrument universe |
 | `evidence/runs/run-2026-09-23T23-54-19/mint_states.jsonl` | Raw mint state per instrument |
-| `evidence/runs/run-2026-09-23T23-54-19/divergence_cases.json` | Measured divergence records |
-| `evidence/runs/run-2026-09-23T23-54-19/divergence_cases_enriched.json` | + price context |
+| `evidence/runs/run-2026-09-23T23-54-19/divergence_cases.json` | Measured divergence records (E1.5) |
+| `evidence/runs/run-2026-09-23T23-54-19/divergence_cases_enriched.json` | + price context (E1.5) |
+| `evidence/runs/run-2026-09-23T23-54-19/multiplier_history.json` | Historical multiplier recovery (E1) |
+| `evidence/semantic_lab/e2_boundary_lab.json` | 15 boundary cases (15/15 PASS) (E2) |
+| `evidence/runs/run-2026-09-23T23-54-19/e3_reconciliation.json` | Dividend reconciliation (E3) |
+| `evidence/runs/run-2026-09-23T23-54-19/e4_baseline.json` | Current-tool baseline vs. Colophon (E4) |
+| `evidence/runs/run-2026-09-23T23-54-19/e5_issuer_attribution.json` | Issuer-action attribution & authorities (E5) |
+| `evidence/runs/run-2026-09-23T23-54-19/e6_pyth_feasibility.json` | Pyth feasibility & auth test (E6) |
+| `evidence/runs/run-2026-09-23T23-54-19/e7_prestocks_feasibility.json` | PreStocks 8/8 gate feasibility (E7) |
 | `evidence/runs/run-2026-09-23T23-54-19/claims.json` | Structured claim records |
 | `docs/DISCOVERY.md` | Full problem analysis |
 | `docs/COMPETITOR_DELTA.md` | Competitor gap analysis |

@@ -21,6 +21,13 @@
 - [x] Run price context fetch
   - [x] OPENAI dollar delta: $1,210,389.59 MEASURED
   - [x] SPACEX dollar delta: $4,055,186.90 MEASURED
+- [x] Run E1: Historical multiplier recovery (scripts/e1-historical-recovery.mjs)
+- [x] Run E2: Semantic boundary lab — 15/15 PASS (scripts/e2-semantic-lab.mjs)
+- [x] Run E3: Dividend reconciliation (scripts/e3-e4-e5-chain.mjs)
+- [x] Run E4: Current-tool baseline (scripts/e3-e4-e5-chain.mjs)
+- [x] Run E5: Issuer-action attribution (scripts/e3-e4-e5-chain.mjs)
+- [x] Run E6: Pyth feasibility test (scripts/e6-pyth-feasibility.mjs)
+- [x] Run E7: PreStocks feasibility test — 8/8 gates PASS (scripts/e7-prestocks-feasibility.mjs)
 - [x] Write docs/DISCOVERY.md
 - [x] Write docs/COMPETITOR_DELTA.md
 - [x] Write docs/GATE_0_REPORT.md

@@ -1,0 +1,61 @@
+{
+  "experiment": "E4",
+  "name": "Current-Tool Baseline",
+  "timestamp": "2026-09-24T00:25:02.140Z",
+  "question": "What does a naive current-state reader produce vs. Colophon's time-aware reconstruction?",
+  "hypothesis": "The baseline (using cfg.multiplier) will produce a materially different result from Colophon (using time-aware multiplier) for all divergent mints.",
+  "method": "Compare baseline (cfg.multiplier applied to rawSupply) against Colophon (activeMultiplier(cfg, nowTs) applied to rawSupply). Both use same rawSupply from chain.",
+  "input": "Measured mint states from run-manifest.",
+  "results": [
+    {
+      "instrument": "OPENAI",
+      "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
+      "baseline": {
+        "multiplierUsed": 1,
+        "uiSupply": 1901.815775765,
+        "dollarValue": 2489823.4810659415,
+        "label": "BASELINE — naive current-state (cfg.multiplier, ignores effectiveTimestamp)"
+      },
+      "colophon": {
+        "multiplierUsed": 1.4861347,
+        "uiSupply": 2826.3544173717855,
+        "dollarValue": 3700213.072086889,
+        "label": "COLOPHON — time-aware reconstruction"
+      },
+      "misstatement": {
+        "uiDelta": 924.5386416067856,
+        "dollarDelta": 1210389.5910209473,
+        "relativeError": "48.6135%",
+        "direction": "BASELINE UNDERSTATES by 48.6135%"
+      }
+    },
+    {
+      "instrument": "SPACEX",
+      "mint": "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh",
+      "baseline": {
+        "multiplierUsed": 1,
+        "uiSupply": 8742.506420027,
+        "dollarValue": 1013796.7247024147,
+        "label": "BASELINE — naive current-state (cfg.multiplier, ignores effectiveTimestamp)"
+      },
+      "colophon": {
+        "multiplierUsed": 5,
+        "uiSupply": 43712.532100135,
+        "dollarValue": 5068983.623512073,
+        "label": "COLOPHON — time-aware reconstruction"
+      },
+      "misstatement": {
+        "uiDelta": 34970.025680108,
+        "dollarDelta": 4055186.898809659,
+        "relativeError": "400.0000%",
+        "direction": "BASELINE UNDERSTATES by 400.0000%"
+      }
+    }
+  ],
+  "claim": "PROVEN: Baseline systematically understates the correct UI supply by 48.6% (OPENAI) and 400% (SPACEX). Colophon's time-aware reconstruction produces the correct result.",
+  "limitations": [
+    "Supply-level comparison only — individual wallet impact requires wallet-specific data.",
+    "Price used is from PreStocks API at scan time, not at effectiveTimestamp."
+  ],
+  "reproduction": "node scripts/e3-e4-e5-chain.mjs"
+}

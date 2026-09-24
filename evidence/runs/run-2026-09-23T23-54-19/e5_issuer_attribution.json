@@ -1,0 +1,115 @@
+{
+  "experiment": "E5",
+  "name": "Issuer-Action Attribution",
+  "timestamp": "2026-09-24T00:25:02.140Z",
+  "question": "What issuer controls are present on divergent PreStocks mints, and what was the observed multiplier change?",
+  "hypothesis": "PreStocks mints carry significant issuer authorities (permanentDelegate, freezeAuthority, pausableConfig) that qualify any collateralization claim.",
+  "method": "Read mint state via getAccountInfo (jsonParsed). Extract all extension states. Record issuer authorities and multiplier changes without inferring intent.",
+  "input": [
+    "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
+    "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh"
+  ],
+  "results": [
+    {
+      "symbol": "OPENAI",
+      "mint": "PreweJYECqtQwBtpxHL171nL2K6umo692gTm7Q3rpgF",
+      "freezeAuthority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+      "mintAuthority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+      "issuerActions": [
+        {
+          "type": "permanentDelegate",
+          "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+          "consequence": "Issuer can transfer tokens from any account without holder consent.",
+          "riskLevel": "HIGH"
+        },
+        {
+          "type": "freezeAuthority",
+          "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+          "consequence": "Issuer can freeze any token account, blocking transfers.",
+          "riskLevel": "HIGH"
+        },
+        {
+          "type": "pausableConfig",
+          "paused": false,
+          "consequence": "Not currently paused. Issuer can pause at any time.",
+          "riskLevel": "MEDIUM"
+        },
+        {
+          "type": "transferHookAuthority",
+          "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+          "programId": null,
+          "consequence": "Issuer can attach a transfer hook at any time.",
+          "riskLevel": "MEDIUM"
+        }
+      ],
+      "multiplierAction": {
+        "type": "scaledUiAmountUpdate",
+        "staleMultiplier": 1,
+        "newMultiplier": 1.4861347,
+        "effectiveTimestamp": 1784305800,
+        "effectiveIso": "2026-07-17T16:30:00.000Z",
+        "observedStateChange": "multiplier changed from 1 to 1.4861347 at 2026-07-17T16:30:00.000Z",
+        "economicInterpretation": "Token display quantity increased by 48.6%. Consistent with a valuation adjustment or supply split.",
+        "source": "on-chain ScaledUiAmountConfig extension",
+        "label": "MEASURED",
+        "note": "Per §15: 'Issuer action detected' — never 'Issuer intentionally...' without a direct source."
+      },
+      "timestamp": "2026-09-24T00:25:02.140Z",
+      "evidenceLabel": "MEASURED"
+    },
+    {
+      "symbol": "SPACEX",
+      "mint": "PreANxuXjsy2pvisWWMNB6YaJNzr7681wJJr2rHsfTh",
+      "freezeAuthority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+      "mintAuthority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+      "issuerActions": [
+        {
+          "type": "permanentDelegate",
+          "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+          "consequence": "Issuer can transfer tokens from any account without holder consent.",
+          "riskLevel": "HIGH"
+        },
+        {
+          "type": "freezeAuthority",
+          "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+          "consequence": "Issuer can freeze any token account, blocking transfers.",
+          "riskLevel": "HIGH"
+        },
+        {
+          "type": "pausableConfig",
+          "paused": false,
+          "consequence": "Not currently paused. Issuer can pause at any time.",
+          "riskLevel": "MEDIUM"
+        },
+        {
+          "type": "transferHookAuthority",
+          "authority": "WV9PJN7XTmTLVwbutCLFxp8TyePee6Xq5mRq6Fti5Wc",
+          "programId": null,
+          "consequence": "Issuer can attach a transfer hook at any time.",
+          "riskLevel": "MEDIUM"
+        }
+      ],
+      "multiplierAction": {
+        "type": "scaledUiAmountUpdate",
+        "staleMultiplier": 1,
+        "newMultiplier": 5,
+        "effectiveTimestamp": 1781065800,
+        "effectiveIso": "2026-06-10T04:30:00.000Z",
+        "observedStateChange": "multiplier changed from 1 to 5 at 2026-06-10T04:30:00.000Z",
+        "economicInterpretation": "Token display quantity increased by 5×. Consistent with a 1:5 forward split.",
+        "source": "on-chain ScaledUiAmountConfig extension",
+        "label": "MEASURED",
+        "note": "Per §15: 'Issuer action detected' — never 'Issuer intentionally...' without a direct source."
+      },
+      "timestamp": "2026-09-24T00:25:02.140Z",
+      "evidenceLabel": "MEASURED"
+    }
+  ],
+  "claim": "MEASURED: Issuer-action authorities confirmed on both mints. Multiplier changes are attributable to issuer-signed transactions (inferred from on-chain state). Intent is not inferred — only observed state is recorded.",
+  "limitations": [
+    "Cannot determine issuer intent from on-chain state alone.",
+    "Original multiplier update transaction signatures not yet recovered (E1 partial).",
+    "Terminology per §15: 'Issuer action detected' — never 'Issuer intentionally'."
+  ],
+  "reproduction": "node scripts/e3-e4-e5-chain.mjs"
+}

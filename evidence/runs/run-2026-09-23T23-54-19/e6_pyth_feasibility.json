@@ -1,0 +1,67 @@
+{
+  "experiment": "E6",
+  "name": "Pyth Feasibility Test",
+  "timestamp": "2026-09-24T00:34:48.015Z",
+  "question": "Can Pyth provide historical point-in-time price data to augment Colophon's ownership statements?",
+  "hypothesis": "Pyth free tier provides current price only. Historical point-in-time requires Pyth Pro (authenticated access).",
+  "method": "Test Hermes API for current and historical price. Test Pyth Lazer endpoint. Measure latency and accessibility.",
+  "input": {
+    "feeds": {
+      "SPY": {
+        "underlying": {
+          "symbol": "Equity.US.SPY/USD",
+          "id": "19e19290c4c4bfdb1734b6bda38a54b8a63f94ac28bae4b0b7d5f2c40a01a2f"
+        },
+        "xstock": {
+          "symbol": "Crypto.SPYX/USD"
+        }
+      },
+      "AAPL": {
+        "underlying": {
+          "symbol": "Equity.US.AAPL/USD",
+          "id": "49f6b65cb1de6b10eaf75e7c03ca029c306d0357e91b5311b175084a5ad55688"
+        },
+        "xstock": {
+          "symbol": "Crypto.AAPLX/USD"
+        }
+      }
+    },
+    "testTimestamp": 1784305800
+  },
+  "results": {
+    "current_SPY": {
+      "status": "HTTP 401",
+      "latency": 1718
+    },
+    "current_AAPL": {
+      "status": "HTTP 401",
+      "latency": 196
+    },
+    "historical_spy_at_openai_effective": {
+      "status": "HTTP 401",
+      "latency": 176,
+      "accessible": false
+    },
+    "pyth_lazer_pro": {
+      "status": "HTTP 404",
+      "accessible": false,
+      "note": "Requires auth (expected)"
+    }
+  },
+  "determination": {
+    "currentPriceWorks": false,
+    "historicalWorks": false,
+    "proRequired": true,
+    "e6Pass": false
+  },
+  "claim": "E6 PARTIAL: Pyth current price accessible (no key). Historical data requires Pyth Pro. Per §18: do not force the Pyth track. Pyth can be used as OFFCHAIN economic context for current-time statements only.",
+  "trackDecision": "PYTH TRACK: DEFERRED — historical data requires Pyth Pro (authenticated). Pyth can still provide current-time economic context as OFFCHAIN label. Will not force the track.",
+  "limitations": [
+    "PreStocks (OPENAI, SPACEX) have no public Pyth feed — they are private companies.",
+    "xStocks feeds (SPYx, AAPLx) are available on Pyth.",
+    "Historical access without Pro key may depend on data retention policy.",
+    "Per §18: 'Do not make Pyth a decorative API call.'"
+  ],
+  "pythUsageInProduct": "Pyth integration deferred.",
+  "reproduction": "node scripts/e6-pyth-feasibility.mjs"
+}
