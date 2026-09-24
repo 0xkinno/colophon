@@ -256,10 +256,6 @@ Tested via `packages/verifier/test/verifier.test.ts`:
 - Terminology rule strictly enforced: `TOKEN UNITS / ECONOMIC EXPOSURE` for PreStocks vs `SHARES` for xStocks.
 - Disclaimers prominently displayed on every screen and statement.
 
-### Pyth Track (DEFERRED)
-- Free Hermes endpoints do not support unauthenticated point-in-time historical queries.
-- Pyth integration deferred to avoid artificial marketing dependencies.
-
 ---
 
 ## Limitations
