@@ -35,7 +35,7 @@ REAL DISCOVERY ──► REAL STATEMENT ──► REAL PROOF ──► REAL DEVN
 | Resource | Description |
 |---|---|
 | **Live App** | [https://colophon-taupe.vercel.app](https://colophon-taupe.vercel.app) |
-| **Video Demo** | [Demo Walkthrough](#) |
+| **Video Demo** | [Demo Walkthrough](https://youtu.be/Ccx4sZqC-mU?si=n0EGG30aaVKaBUkD) |
 | **Tracks** | Main Track x PreStocks |
 | **GitHub Repository** | [https://github.com/0xkinno/colophon](https://github.com/0xkinno/colophon) |
 | **Devnet Program Explorer** | [Solana Explorer (`7pPKsqAg...`)](https://explorer.solana.com/address/7pPKsqAg9AFZzSEJbygpbqAVKGFgXpaN5AcqNKrwhCe2?cluster=devnet) |
